@@ -6,10 +6,15 @@ import Screen from './components/screen';
 // import Cookies from 'universal-cookie';
 import {ROUTES} from'./constants/routes/main.route'
 import useJedis from "jedisdb";
+import firebase from './utils/firebase/firebase'
 
+import Modal from './components/modal.js';
+import Alert from './components/alert.js';
 function Main() {
   return (
     <Suspense fallback={<LoadingScreen />}>
+      <Modal />
+      <Alert />
         <main>
             <Switch>
             {

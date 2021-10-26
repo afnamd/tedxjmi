@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 
 
 const LoadingScreen = () => (
-  <div>
+  <div className='h-screen bg-darkGray-default'>
     <Link to='/'>
-      loading...
+      
     </Link>
   </div>
 );
