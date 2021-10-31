@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .bg-image{
-  background-image: url("/assets/images/home-bg-1.jpg");background-repeat: no-repeat;background-size: cover;background-position: center;opacity:0.05
+  background-image: url("assets/images/home-bg-1.jpg");background-repeat: no-repeat;background-size: cover;background-position: center;opacity:0.05
 }
 .btn{
   @apply bg-darkGray-default p-3 text-center rounded-md cursor-pointer hover:bg-darkGray-600 active:bg-darkGray-700
@@ -82,6 +82,10 @@
 
 .min-h-screen{
   min-height: calc(var(--vh, 1vh) * 100)
+}
+
+.grecaptcha-badge { 
+  visibility: hidden;
 }
 
 .animate-bottom{position:relative;animation:animatebottom 0.1s}@keyframes animatebottom{from{bottom:-300px;opacity:0} to{bottom:0;opacity:1}}

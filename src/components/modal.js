@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from "framer-motion"
-import VolunteerReg from '../screens/volunteerReg/'
+import VolunteerReg from '../screens/volunteerReg/index'
 import useJedis from 'jedisdb'
 const Modal = () =>{
     const modal = useJedis('modal')

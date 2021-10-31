@@ -3,10 +3,7 @@ const TextInput = ({label='',defaultValue='', placeholder,subLabel='',error='', 
     if(!placeholder)
         placeholder = label
     const [data, setData] = useState(defaultValue)   
-    useEffect(()=>{
-        console.log(11,update)
-        setData(update)
-    },[update]) 
+
     useEffect(()=>{
         onChange(data)
     },[data])
