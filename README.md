@@ -1,43 +1,29 @@
-<h1 align="center">Rect Monorepo</h1>
-<h3 align="center">Start your next react project in seconds</h3>
-<p align="center">A scalable and a focus on best practices</p>
+# Next.js + Tailwind CSS Example
 
-<h1>Features 📋</h1>
+This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
 
-### react-router
-already installed and configured react-router.
+It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
 
-### redux
-easy implementation of redux using redux-toolkit, 
+## Preview
 
-### pre installed modules/frameworks
-axios, react-hook-form, Bulma, universal-cookie...
+Preview the example live on [StackBlitz](http://stackblitz.com/):
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
 
-<h1>Setup ⚙️</h1>
+## Deploy your own
 
-1. Make sure that you have Node.js v8.15.1 and npm v5 or above installed.
-2. Clone this repo using `git clone --depth=1 https://github.com/alhaqhassan/react-monorepo.git <YOUR_PROJECT_NAME>`
-3. Move to the appropriate directory: cd <YOUR_PROJECT_NAME>.
-4. Run npm run setup in order to install dependencies.
-At this point you can run npm start to see the example app at http://localhost:3000.
+Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
 
+## How to use
 
+Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
 
-## TODO
-- [x] decide project structure
-- [x] setup react-router
-- [x] setup redux
-- [x] setup jedisdb
-- [x] setup tailwind
-- [x] install important modules
+```bash
+npx create-next-app --example with-tailwindcss with-tailwindcss-app
+# or
+yarn create next-app --example with-tailwindcss with-tailwindcss-app
+```
 
-
-# Show your support
-
-Give a ⭐️ if this project helped you!
-
-# 🤝 Contributing
-
-Contributions, issues and feature requests are welcome! Feel free to check [issues page](https://github.com/alhaqhassan/react-monorepo/issues).
+Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
