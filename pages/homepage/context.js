@@ -2,7 +2,7 @@ import React from 'react'
 const Context = () =>{
     return(
         <>
-            <div className="lg:flex ">
+            <div className="lg:flex bg-white rounded-b-2xl p-12">
                 <div className="pt-20 p-4 flex flex-col gap-4">
                     <div className="text-3xl md:text-4xl text-center md:text-left  font-Cinzel">
                     Our idea of "Different Lenses"
@@ -22,7 +22,7 @@ const Context = () =>{
                     </div>
                 </div>
             </div>
-            <div class="mt-10 md:flex items-center  flex-row-reverse md:w-4/5 justify-center ml-auto mr-auto">
+            {/* <div class="mt-10 md:flex items-center  flex-row-reverse md:w-4/5 justify-center ml-auto mr-auto">
                 <div class="flex justify-center md:block">
                     <img class="w-48 md:w-auto" src="https://i.ibb.co/dggJCXJ/image.png" />
                 </div>
@@ -36,7 +36,7 @@ const Context = () =>{
                     </div>
                 </div>
                 
-            </div>
+            </div> */}
         </>
     )
 }

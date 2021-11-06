@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../../components/navbar';
 const Landingpage = () =>{
     return(
-        <div className="landingPage font-Cinzel flex flex-col gap-5">
+        <div className="landingPage font-Cinzel flex flex-col gap-5 bg-white">
             <div className=" text-3xl md:text-5xl text-center ">
                     Different Lenses
             </div>
