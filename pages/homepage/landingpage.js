@@ -7,7 +7,7 @@ const Landingpage = () =>{
                     Different Lenses
             </div>
             <div className='flex justify-center'>
-                <img src="images/landingPage-bg-image.jpg" className='md:w-4/5'/>
+                <img src="static/images/landingPage-bg-image.jpg" className='md:w-4/5'/>
             </div>
         </div>
     )

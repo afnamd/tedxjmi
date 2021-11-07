@@ -4,10 +4,10 @@
 @tailwind utilities;
 
 .bg{
-    background-image: url("../public/images/landingPage-bg-image.jpg");background-repeat: no-repeat;background-size: cover;background-position: center
+    background-image: url("../public/static/images/landingPage-bg-image.jpg");background-repeat: no-repeat;background-size: cover;background-position: center
 }
 .venueBg{
-    background-image: url("../public/images/m_a_ansari_bg.jpg");
+    background-image: url("../public/static/images/m_a_ansari_bg.jpg");
     /* filter: blur(4px); */
     width: 100%;
     height: 400px;

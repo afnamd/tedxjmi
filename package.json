@@ -1,17 +1,22 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && next export",
-    "start": "next start"
+    "replaceFilePaths": "node replacer.js",
+    "dev": "next dev",    
+    "build": "NODE_ENV=production rimraf ./build && next build && next export -o build && rimraf ./build/**/*.map",
+    "start": "next start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "next": "latest",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "replace-in-file": "^6.3.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
+    "gh-pages": "^3.2.3",
     "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4"
   }
