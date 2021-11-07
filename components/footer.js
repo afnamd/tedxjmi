@@ -2,7 +2,7 @@ import React from 'react'
 const Footer = () =>{
     return(
         <div class="text-white font-Cinzel pt-10 pl-10 pr-10 flex flex-col gap-10 bg-black">
-            <div class="flex gap-12 items-center flex-col md:flex-row md:justify-between">
+            <div class="flex gap-12 md:items-start items-center flex-col md:flex-row md:justify-between">
             <div class="flex flex-col gap-3">
                 <div class=" font-bold text-center md:text-left text-2xl">
                 Jamia Millia Islamia, New Delhi

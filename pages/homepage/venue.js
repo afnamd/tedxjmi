@@ -1,7 +1,9 @@
 import React from "react";
 const Venue = () =>{
     return(
-        <div className="bg-black venueBg text-white flex items-center justify-center ">
+        <div className="bg-black relative venueBg text-white flex items-center justify-center ">
+
+
             <div class="relative gap-4 font-Cinzel flex justify-center flex-col items-center" style={{filter: 'blur(0)'}}>
                 <div class="text-5xl">
                     Venue
