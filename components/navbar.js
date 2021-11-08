@@ -1,7 +1,7 @@
 import React from 'react'
 const Navbar = () =>{
     return(
-        <div className="flex justify-around items-center p-4 bg-white">
+        <div className="flex justify-evenly items-center p-4 bg-white">
             <div className="md:flex hidden">
                 <div className="font-Cinzel p-4">
                     About
