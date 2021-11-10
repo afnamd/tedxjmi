@@ -185,7 +185,7 @@ const Partners = () => {
       </div>
 
       <div class="font-Cinzel text-2xl">
-        <div class=" text-center">Archive</div>
+        <div class=" text-center">Timeline</div>
         {isTabletOrMobile ? <ArchiveMobile/> : <ArchiveDesktop />}
       </div>
     </div>
