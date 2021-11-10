@@ -7,9 +7,12 @@ const Partners = () =>{
             <div class=" text-center">
                 <h3>Partners</h3>
             </div>
-            <div class="flex  justify-around mt-5">
+            <div className="flex flex-wrap w-full items-center justify-around mt-5">
+                <div >
+                <AfnamdLogo fill={'#2A2829'} w={256}/>
+                </div>
                 <div>
-                   <AfnamdLogo fill={'#2A2829'} w={256}/>
+                    <img className="w-44" src="/static/images/lotto-logo.png" alt="afnamd" />
                 </div>
             </div>
             </div>
