@@ -6,6 +6,9 @@
 .bg{
     background-image: url("../public/static/images/landingPage-bg-image.jpg");background-repeat: no-repeat;background-size: cover;background-position: center
 }
+.min-h-400{
+    min-height: 400px;
+}
 .venueBg{
     background-image: url("../public/static/images/m_a_ansari_bg.jpg");
     /* filter: blur(4px); */

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
+import AfnamdLogo from "../../components/svg/afnamd";
+
 
 const ArchiveDesktop = () => {
   return (
@@ -17,6 +19,7 @@ const ArchiveDesktop = () => {
             </h1>
             <div class="text-sm mt-2 mb-5">
               lorem ipsum dolor sit amet consectetur adipisicing elit.
+
             </div>
 
             <a
@@ -192,26 +195,20 @@ const Partners = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
   return (
-    <div class="bg-white rounded-2xl p-12 flex flex-col gap-12">
-      <div class="font-Cinzel text-2xl">
-        <div class=" text-center">Partners</div>
-        <div class="flex flex-wrap w-full items-center justify-around mt-5">
-          <div>
-            <img
-              class="w-44"
-              src="/static/images/afnamd-logo.png"
-              alt="afnamd"
-            />
-          </div>
-          <div>
-            <img
-              class="w-44"
-              src="/static/images/lotto-logo.png"
-              alt="afnamd"
-            />
-          </div>
+    <div class="bg-white rounded-2xl p-12 flex flex-col gap-12 min-h-400">
+    <div class="font-Cinzel text-2xl">
+    <div class=" text-center">
+        <h3>Partners</h3>
+    </div>
+    <div className="flex flex-wrap w-full items-center justify-around mt-5">
+        <div >
+        <AfnamdLogo fill={'#2A2829'} w={256}/>
         </div>
-      </div>
+        <div>
+            <img className="w-44" src="/static/images/lotto-logo.png" alt="afnamd" />
+        </div>
+    </div>
+</div>
 
       <div class="font-Cinzel text-2xl">
         <div class=" text-center">Timeline</div>
