@@ -7,9 +7,7 @@ const ArchiveDesktop = () =>{
     <div class="flex">
       <div class="group -mr-4">
         <div class=" w-4 h-4 bg-black rounded-full transition-all" />
-        <div class="absolute w-80 h-48 bg-white opacity-0 -mt-48 
-        
-        group-hover:-mt-52 group-hover:opacity-100 transition-all -ml-32 rounded-md border-2 p-8 shadow-xl">
+        <div class="absolute w-80 h-48 bg-white opacity-0 -mt-48 group-hover:-mt-52 group-hover:opacity-100 transition-all -ml-32 rounded-md border-2 p-8 shadow-xl">
           <h1>
               TEDxJMI <span class="text-red-500">2011</span>
           </h1>
