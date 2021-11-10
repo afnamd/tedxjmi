@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "replaceFilePaths": "node replacer.js",
-    "dev": "next dev",    
+    "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
     "deploy": "next build && next export && git add out/ && git commit -m \"Deploy gh-pages\" && git subtree push --prefix out origin gh-pages"
@@ -11,6 +11,7 @@
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-responsive": "^9.0.0-beta.4",
     "replace-in-file": "^6.3.2"
   },
   "devDependencies": {
