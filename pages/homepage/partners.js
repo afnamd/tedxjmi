@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { useMediaQuery } from "react-responsive";
+import React from "react";
 import AfnamdLogo from "../../components/svg/afnamd";
 
 const ArchiveDesktop = () => {
   return (
-    <div className="flex  justify-around mt-52">
+    <div className="xl:flex hidden justify-around mt-52">
       <div className="flex">
         <div className="group h-16">
           <div className=" w-4 h-4 bg-black rounded-full transition-all" />
@@ -94,7 +93,7 @@ const ArchiveDesktop = () => {
 
 const ArchiveMobile = () => {
   return (
-    <div className="mt-12 md:ml-52">
+    <div className="mt-12 md:ml-52 xl:hidden block">
       <div className="group -mr-4 ">
         <div className=" w-4 h-4 bg-black rounded-full transition-all " />
         <div className="">
@@ -178,8 +177,6 @@ const ArchiveMobile = () => {
 };
 
 const Partners = () => {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
-
   return (
     <div className="bg-white rounded-2xl p-12 flex flex-col gap-12 min-h-400">
       <div className="font-Cinzel text-2xl mt-12">
@@ -201,7 +198,8 @@ const Partners = () => {
       </div>
       <div className="font-Cinzel text-2xl mt-12">
         <div className=" text-center">Timeline</div>
-        {isTabletOrMobile ? <ArchiveMobile /> : <ArchiveDesktop />}
+        <ArchiveMobile />
+        <ArchiveDesktop />
       </div>
     </div>
   );
