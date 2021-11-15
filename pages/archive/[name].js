@@ -10,6 +10,7 @@ import Speaker from "./components/Speaker"
 import Team from "./components/Team"
 import ImageGallery from "./components/ImageGallery"
 import ImageShow from "./components/ImageShow"
+import ArchiveMobile from "./components/ArchiveMobile";
 
 function archive(props) {
   console.log(props);
@@ -44,6 +45,7 @@ function archive(props) {
         {props.data.Speaker ? <Speaker archive={archive} setArchive={setArchive} showImage={showImage} data={props.data}/>:null}
         {props.data.Teams ? <Team archive={archive} setArchive={setArchive} showImage={showImage} data={props.data}/>:null}
         {props.data.Gallery ? <ImageGallery archive={archive} setArchive={setArchive} showImage={showImage} data={props.data}/>:null}
+        <ArchiveMobile data={props.data}/>
     </Layout>
   );
 }
