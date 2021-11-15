@@ -1,6 +1,6 @@
 import React from "react";
 import AfnamdLogo from "../../components/svg/afnamd";
-
+import Link from "next/link"
 const ArchiveDesktop = () => {
   return (
     <div className="xl:flex hidden justify-around mt-52">
@@ -14,12 +14,13 @@ const ArchiveDesktop = () => {
             <div className="text-sm mt-2 mb-5">
               lorem ipsum dolor sit amet consectetur adipisicing elit.
             </div>
+            <Link href="/archive/2011">
             <a
               className="text-base text-red-500 transition-all hover:text-red-600"
-              href="#"
             >
               Know More
             </a>
+            </Link>
           </div>
           <div className="absolute  bg-white w-80 h-12 -mt-4 opacity-0    overflow-hidden  transition-all -ml-32 rounded-md border-2 shadow-xl" />
           <p className="text-sm -ml-1 mt-7 font-bold absolute">2011</p>
@@ -34,13 +35,14 @@ const ArchiveDesktop = () => {
             <div className="text-sm mt-2 mb-5">
               lorem ipsum dolor sit amet consectetur adipisicing elit.
             </div>
-
+            <Link href="/archive/2017">
             <a
               className="text-base text-red-500 transition-all hover:text-red-600"
               href="#"
             >
               Know More
             </a>
+            </Link>
           </div>
           <div className="absolute  bg-white w-80 h-12 -mt-4 opacity-0    overflow-hidden  transition-all -ml-32 rounded-md border-2 shadow-xl" />
           <p className="text-sm -ml-1 mt-7 font-bold absolute">2017</p>
@@ -55,12 +57,14 @@ const ArchiveDesktop = () => {
             <div className="text-sm mt-2 mb-5">
               lorem ipsum dolor sit amet consectetur adipisicing elit.
             </div>
+            <Link href="/archive/2019">
             <a
               className="text-base text-red-500 transition-all hover:text-red-600"
               href="#"
             >
               Know More
             </a>
+            </Link>
           </div>
           <div className="absolute  bg-white w-80 h-12 -mt-4 opacity-0    overflow-hidden  transition-all -ml-32 rounded-md border-2 shadow-xl" />
           <p className="text-sm -ml-1 mt-7 font-bold absolute">2019</p>
@@ -75,13 +79,14 @@ const ArchiveDesktop = () => {
             <div className="text-sm mt-2 mb-5">
               lorem ipsum dolor sit amet consectetur adipisicing elit.
             </div>
-
+            <Link href="/archive/2021">
             <a
               className="text-base text-red-500 transition-all hover:text-red-600"
               href="#"
             >
               Know More
             </a>
+            </Link>
           </div>
           <div className="absolute  bg-white w-80 h-12 -mt-4 opacity-0    overflow-hidden  transition-all -ml-32 rounded-md border-2 shadow-xl" />
           <p className="text-sm -ml-1 mt-7 font-bold absolute">2021</p>
@@ -99,18 +104,19 @@ const ArchiveMobile = () => {
         <div className="">
           <div className="absolute w-56 h-48 ml-8 -mt-5">
             <h1>
-              TEDxJMI <span className="text-red-500">2017</span>
+              TEDxJMI <span className="text-red-500">2011</span>
             </h1>
             <div className="text-sm mt-2 mb-5">
               lorem ipsum dolor sit amet consectetur adipisicing elit.
             </div>
-
+            <Link href="/archive/2011">
             <a
               className="text-base text-red-500 transition-all hover:text-red-600"
               href="#"
             >
               Know More
             </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -125,13 +131,14 @@ const ArchiveMobile = () => {
           <div className="text-sm mt-2 mb-5">
             lorem ipsum dolor sit amet consectetur adipisicing elit.
           </div>
-
+          <Link href="/archive/2017">
           <a
             className="text-base text-red-500 transition-all hover:text-red-600"
             href="#"
           >
             Know More
           </a>
+          </Link>
         </div>
       </div>
       <div className="h-64 border-l-2 ml-2 border-black" />
@@ -139,18 +146,20 @@ const ArchiveMobile = () => {
         <div className=" w-4 h-4 bg-black rounded-full transition-all " />
         <div className="absolute w-56 h-48 ml-8 -mt-5">
           <h1>
-            TEDxJMI <span className="text-red-500">2017</span>
+            TEDxJMI <span className="text-red-500">2019</span>
           </h1>
           <div className="text-sm mt-2 mb-5">
             lorem ipsum dolor sit amet consectetur adipisicing elit.
           </div>
 
+          <Link href="/archive/2019">
           <a
             className="text-base text-red-500 transition-all hover:text-red-600"
             href="#"
           >
             Know More
           </a>
+          </Link>
         </div>
       </div>
       <div className="h-52 border-l-2 ml-2 border-black" />
@@ -158,18 +167,20 @@ const ArchiveMobile = () => {
         <div className=" w-4 h-4 bg-black rounded-full transition-all " />
         <div className="absolute w-56 h-48 ml-8 -mt-5">
           <h1>
-            TEDxJMI <span className="text-red-500">2017</span>
+            TEDxJMI <span className="text-red-500">2021</span>
           </h1>
           <div className="text-sm mt-2 mb-5">
             lorem ipsum dolor sit amet consectetur adipisicing elit.
           </div>
 
+          <Link href="/archive/2021">
           <a
             className="text-base text-red-500 transition-all hover:text-red-600"
             href="#"
           >
             Know More
           </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -187,13 +198,13 @@ const Partners = () => {
           <div>
             <AfnamdLogo fill={"#2A2829"} w={256} />
           </div>
-          {/* <div>
+          <div>
             <img
               className="w-44"
               src="/static/images/lotto-logo.png"
               alt="afnamd"
             />
-          </div> */}
+          </div>
         </div>
       </div>
       <div className="font-Cinzel text-2xl mt-12">

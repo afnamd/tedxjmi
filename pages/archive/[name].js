@@ -1,18 +1,49 @@
-import React from "react";
-import axios from "axios";
+import React,{useState} from "react";
 
 import { getArchive } from "../api/archive";
 import Layout from "../../components/layout";
 
 //Components
 import ArchiveTop from "./components/ArchiveTop"
+import Theme from "./components/theme"
+import Speaker from "./components/Speaker"
+import Team from "./components/Team"
+import ImageGallery from "./components/ImageGallery"
+import ImageShow from "./components/ImageShow"
 
 function archive(props) {
   console.log(props);
 
+  const [archive, setArchive] = useState({
+    src: "",
+    show: false
+  });
+
+  function showImage(e, src){
+    e.preventDefault();
+    setArchive({
+      src: src,
+      show: true
+    });
+  }
+
+  function hideImage(e){
+    e.preventDefault();
+    setArchive({
+      src: "",
+      show: false
+    });
+  }
+
   return (
     <Layout>
-        <ArchiveTop />
+
+        <ImageShow archive={archive} setArchive={setArchive} hideImage={hideImage}/>
+        <ArchiveTop data={props.data}/>
+        <Theme />
+        {props.data.Speaker ? <Speaker archive={archive} setArchive={setArchive} showImage={showImage} data={props.data}/>:null}
+        {props.data.Teams ? <Team archive={archive} setArchive={setArchive} showImage={showImage} data={props.data}/>:null}
+        {props.data.Gallery ? <ImageGallery archive={archive} setArchive={setArchive} showImage={showImage} data={props.data}/>:null}
     </Layout>
   );
 }
