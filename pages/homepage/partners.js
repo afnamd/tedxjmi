@@ -2,8 +2,9 @@ import React from "react";
 import AfnamdLogo from "../../components/svg/afnamd";
 
 const ArchiveDesktop = () => {
+
   return (
-    <div className="xl:flex hidden justify-around mt-52">
+    <div className="xl:flex hidden justify-around mt-52 text-base">
       <div className="flex">
         <div className="group h-16">
           <div className=" w-4 h-4 bg-black rounded-full transition-all" />
@@ -180,8 +181,8 @@ const Partners = () => {
   return (
     <div className="bg-white rounded-2xl p-12 flex flex-col gap-12 min-h-400">
       <div className="font-Cinzel text-2xl mt-12">
-        <div className=" text-center">
-          <h3>Partners</h3>
+        <div className=" md:text-center text-left">
+          <h3 className=''>Partners</h3>
         </div>
         <div className="flex flex-wrap w-full items-center justify-around mt-12">
           <div>
@@ -197,7 +198,7 @@ const Partners = () => {
         </div>
       </div>
       <div className="font-Cinzel text-2xl mt-12">
-        <div className=" text-center">Timeline</div>
+        <div className=" md:text-center text-left">Timeline</div>
         <ArchiveMobile />
         <ArchiveDesktop />
       </div>

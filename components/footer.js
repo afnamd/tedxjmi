@@ -1,4 +1,5 @@
 import React from "react";
+import Input from "./input";
 import AfnamdLogo from "./svg/afnamd";
 const Footer = () => {
   return (
@@ -35,14 +36,10 @@ const Footer = () => {
           <div className="flex flex-col gap-2 ">
             <div className=" text-xl">Subscribe to our newsletters</div>
             <div className="flex border pl-3 rounded-2xl font-sans justify-between">
-              <input
-                type="text"
-                className="p-4 outline-none bg-black w-full placeholder-gray-700"
-                placeholder="email"
-              />
-              <button className="hover:ring-1 rounded-r-2xl ring-white p-4">
-                Signup
-              </button>
+                <Input className="border-black placeholder-red-400" placeholder="email" />
+                <button className="hover:ring-1 rounded-r-2xl ring-white p-4">
+                  Signup
+                </button>
             </div>
           </div>
           <div className="flex justify-center gap-12">
@@ -95,6 +92,12 @@ const Footer = () => {
             <path d="M14.75 1A5.24 5.24 0 0 0 10 4 5.24 5.24 0 0 0 0 6.25C0 11.75 10 19 10 19s10-7.25 10-12.75A5.25 5.25 0 0 0 14.75 1z" />
           </svg>
           By
+          <span className='font-bold text-xl'>
+            TEDxJMI
+          </span>
+          <span>
+            &
+          </span>
           <AfnamdLogo w={138} fill={"white"} />
         </div>
       </div>
