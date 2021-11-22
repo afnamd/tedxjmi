@@ -78,7 +78,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="font-sans mt-10 mb-5 flex md:border-t text-sm  flex-col md:flex-row items-center md:justify-between justify-center">
+      <div className="font-sans mt-10 mb-5 flex md:border-t border-gray-900 text-sm  flex-col md:flex-row items-center md:justify-between justify-center">
         <div>TEDxJMI 2021 Operating under license from TED™</div>
         <div className="flex items-center gap-3 hover:ring-1 ring-white m-3 p-3 cursor-pointer">
           Made With
@@ -92,13 +92,16 @@ const Footer = () => {
             <path d="M14.75 1A5.24 5.24 0 0 0 10 4 5.24 5.24 0 0 0 0 6.25C0 11.75 10 19 10 19s10-7.25 10-12.75A5.25 5.25 0 0 0 14.75 1z" />
           </svg>
           By
-          <span className='font-bold text-xl'>
-            TEDxJMI
-          </span>
-          <span>
-            &
-          </span>
-          <AfnamdLogo w={138} fill={"white"} />
+          <div className=''>
+              <span className='font-bold text-xl'>
+                  TEDxJMI
+              </span>
+              {' '}
+              <span>
+                &
+              </span>
+            <AfnamdLogo w={138} fill={"white"} />
+          </div>
         </div>
       </div>
     </div>
