@@ -199,13 +199,13 @@ const Partners = () => {
           <div>
             <AfnamdLogo fill={"#2A2829"} w={256} />
           </div>
-          <div>
+          {/* <div>
             <img
               className="w-44"
               src="/static/images/lotto-logo.png"
               alt="afnamd"
             />
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="font-Cinzel text-2xl mt-12">
