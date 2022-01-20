@@ -21,7 +21,9 @@ const Navbar = () => {
           <Link href={"/archive/2011"}>
             <div className="font-Cinzel p-4">Archive</div>
           </Link>
-          <div className="font-Cinzel p-4">Contact</div>
+          <Link href={"/contact/"}>
+            <div className="font-Cinzel p-4">Contact</div>
+          </Link>
       </div>
     </div>
   );
