@@ -17,11 +17,11 @@ function Contact() {
             <div className="flex flex-col justify-center items-center">
                 <div className="flex py-2 border-b-2 border-red-200">
                     <HiOutlineMail className="h-7 w-7 text-red-600"/>
-                    <span className="self-center pl-1">tedxjmi2017@gmail.com</span>
+                    <span className="self-center pl-1">team@tedxjmi.org</span>
                 </div>
                 <div className="flex py-2 ">
                     <BiPhone className="h-7 w-7 text-red-600"/>
-                    <span className="self-center pl-1">7303435034</span>
+                    <span className="self-center pl-1">7073269078</span>
                 </div>
             </div>
           <div className="flex flex-col justify-center items-center text-center md:justify-start md:items-start">
