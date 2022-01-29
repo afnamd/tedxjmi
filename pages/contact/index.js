@@ -13,7 +13,7 @@ function Contact() {
           <h1 className="text-5xl">Contact Us </h1>
           <p className="py-2">Feel Free to contact us</p>
         </div>
-        <div className="w-full md:p-4">
+        <div className="w-full md:p-4 font-Lora">
             <div className="flex flex-col justify-center items-center">
                 <div className="flex py-2 border-b-2 border-red-200">
                     <HiOutlineMail className="h-7 w-7 text-red-600"/>

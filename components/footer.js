@@ -37,7 +37,7 @@ const Footer = () => {
             <div className=" text-xl">Subscribe to our newsletters</div>
             <div className="flex border pl-3 rounded-2xl font-sans justify-between">
                 <Input className="border-black placeholder-red-400" placeholder="email" />
-                <button className="hover:ring-1 rounded-r-2xl ring-white p-4">
+                <button className=" rounded-r-2xl ring-white p-4">
                   Signup
                 </button>
             </div>
