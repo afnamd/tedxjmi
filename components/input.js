@@ -13,4 +13,5 @@ const Input = ({className, placeholder=''}) =>{
         </div>
     )
 }
+
 export default Input;
