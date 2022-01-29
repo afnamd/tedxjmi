@@ -1,8 +1,8 @@
 import React from "react";
 import AfnamdLogo from "../../components/svg/afnamd";
-import Link from "next/link"
+import Link from "next/link";
+import { data } from "../api/archive";
 const ArchiveDesktop = () => {
-
   return (
     <div className="xl:flex hidden justify-around mt-52 text-base">
       <div className="flex">
@@ -10,87 +10,66 @@ const ArchiveDesktop = () => {
           <div className=" w-4 h-4 bg-black rounded-full transition-all" />
           <div className="absolute  bg-white w-80 h-0 overflow-hidden opacity-0 -mt-48 group-hover:-mt-52 group-hover:h-48 group-hover:opacity-100 transition-all -ml-32 rounded-md border-2 p-8 shadow-xl">
             <h1>
-              TEDxJMI <span className="text-red-500">2011</span>
+              {data[0].theme} <span className="text-red-500">{data[0].year}</span>
             </h1>
-            <div className="text-sm mt-2 mb-5">
-              lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </div>
-            <Link href="/archive/2011">
-            <a
-              className="text-base text-red-500 transition-all hover:text-red-600"
-            >
-              Know More
-            </a>
+            <div className="text-sm mt-2 mb-5">{data[0].description.substring(0, 60) + " . . . "}</div>
+            <Link href={"/archive/" + data[0].year}>
+              <a className="text-base text-red-500 transition-all hover:text-red-600">Know More</a>
             </Link>
           </div>
           <div className="absolute  bg-white w-80 h-12 -mt-4 opacity-0    overflow-hidden  transition-all -ml-32 rounded-md border-2 shadow-xl" />
-          <p className="text-sm -ml-1 mt-7 font-bold absolute">2011</p>
+          <p className="text-sm -ml-1 mt-7 font-bold absolute">{data[0].year}</p>
         </div>
         <div className="w-96 border-t-2 mt-2 border-black" />
         <div className="group">
           <div className=" w-4 h-4 bg-black rounded-full transition-all " />
           <div className="absolute  bg-white w-80 h-0 overflow-hidden opacity-0 -mt-48 group-hover:-mt-52 group-hover:h-48 group-hover:opacity-100 transition-all -ml-32 rounded-md border-2 p-8 shadow-xl">
             <h1>
-              TEDxJMI <span className="text-red-500">2017</span>
+              {data[1].theme} <span className="text-red-500">{data[1].year}</span>
             </h1>
-            <div className="text-sm mt-2 mb-5">
-              lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </div>
-            <Link href="/archive/2017">
-            <a
-              className="text-base text-red-500 transition-all hover:text-red-600"
-              href="#"
-            >
-              Know More
-            </a>
+            <div className="text-sm mt-2 mb-5">{data[1].description.substring(0, 60) + " . . . "}</div>
+            <Link href={"/archive/" + data[1].year}>
+              <a className="text-base text-red-500 transition-all hover:text-red-600" href="#">
+                Know More
+              </a>
             </Link>
           </div>
           <div className="absolute  bg-white w-80 h-12 -mt-4 opacity-0    overflow-hidden  transition-all -ml-32 rounded-md border-2 shadow-xl" />
-          <p className="text-sm -ml-1 mt-7 font-bold absolute">2017</p>
+          <p className="text-sm -ml-1 mt-7 font-bold absolute">{data[1].year}</p>
         </div>
         <div className="w-56 border-t-2 mt-2 border-black" />
         <div className="group">
           <div className=" w-4 h-4 bg-black rounded-full transition-all " />
           <div className="absolute  bg-white w-80 h-0 overflow-hidden opacity-0 -mt-48 group-hover:-mt-52 group-hover:h-48 group-hover:opacity-100 transition-all -ml-32 rounded-md border-2 p-8 shadow-xl">
             <h1>
-              TEDxJMI <span className="text-red-500">2019</span>
+              {data[2].theme} <span className="text-red-500">{data[2].year}</span>
             </h1>
-            <div className="text-sm mt-2 mb-5">
-              lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </div>
-            <Link href="/archive/2019">
-            <a
-              className="text-base text-red-500 transition-all hover:text-red-600"
-              href="#"
-            >
-              Know More
-            </a>
+            <div className="text-sm mt-2 mb-5">{data[2].description.substring(0, 60) + " . . . "}</div>
+            <Link href={"/archive/" + data[2].year}>
+              <a className="text-base text-red-500 transition-all hover:text-red-600" href="#">
+                Know More
+              </a>
             </Link>
           </div>
           <div className="absolute  bg-white w-80 h-12 -mt-4 opacity-0    overflow-hidden  transition-all -ml-32 rounded-md border-2 shadow-xl" />
-          <p className="text-sm -ml-1 mt-7 font-bold absolute">2019</p>
+          <p className="text-sm -ml-1 mt-7 font-bold absolute">{data[2].year}</p>
         </div>
         <div className="w-52 border-t-2 mt-2 border-black" />
         <div className="group">
           <div className=" w-4 h-4 border-4 border-black box-border rounded-full transition-all " />
           <div className="absolute  bg-white w-80 h-0 overflow-hidden opacity-0 -mt-48 group-hover:-mt-52 group-hover:h-48 group-hover:opacity-100 transition-all -ml-32 rounded-md border-2 p-8 shadow-xl">
             <h1>
-              TEDxJMI <span className="text-red-500">2021</span>
+              {data[3].theme} <span className="text-red-500">{data[3].year}</span>
             </h1>
-            <div className="text-sm mt-2 mb-5">
-              lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </div>
-            <Link href="/archive/2021">
-            <a
-              className="text-base text-red-500 transition-all hover:text-red-600"
-              href="#"
-            >
-              Know More
-            </a>
+            <div className="text-sm mt-2 mb-5">{data[3].description.substring(0, 60) + " . . . "}</div>
+            <Link href={"/archive/" + data[3].year}>
+              <a className="text-base text-red-500 transition-all hover:text-red-600" href="#">
+                Know More
+              </a>
             </Link>
           </div>
           <div className="absolute  bg-white w-80 h-12 -mt-4 opacity-0    overflow-hidden  transition-all -ml-32 rounded-md border-2 shadow-xl" />
-          <p className="text-sm -ml-1 mt-7 font-bold absolute">2021</p>
+          <p className="text-sm -ml-1 mt-7 font-bold absolute">{data[3].year}</p>
         </div>
       </div>
     </div>
@@ -105,18 +84,13 @@ const ArchiveMobile = () => {
         <div className="">
           <div className="absolute w-56 h-48 ml-8 -mt-5">
             <h1>
-              TEDxJMI <span className="text-red-500">2011</span>
+              {data[0].theme} <span className="text-red-500">{data[0].year}</span>
             </h1>
-            <div className="text-sm mt-2 mb-5">
-              lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </div>
+            <div className="text-sm mt-2 mb-5">{data[0].description.substring(0, 60) + " . . . "}</div>
             <Link href="/archive/2011">
-            <a
-              className="text-base text-red-500 transition-all hover:text-red-600"
-              href="#"
-            >
-              Know More
-            </a>
+              <a className="text-base text-red-500 transition-all hover:text-red-600" href="#">
+                Know More
+              </a>
             </Link>
           </div>
         </div>
@@ -127,18 +101,13 @@ const ArchiveMobile = () => {
         <div className=" w-4 h-4 bg-black rounded-full transition-all " />
         <div className="absolute w-56 h-48 ml-8 -mt-5">
           <h1>
-            TEDxJMI <span className="text-red-500">2017</span>
+            {data[1].theme} <span className="text-red-500">{data[1].year}</span>
           </h1>
-          <div className="text-sm mt-2 mb-5">
-            lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </div>
+          <div className="text-sm mt-2 mb-5">{data[1].description.substring(0, 60) + " . . . "}</div>
           <Link href="/archive/2017">
-          <a
-            className="text-base text-red-500 transition-all hover:text-red-600"
-            href="#"
-          >
-            Know More
-          </a>
+            <a className="text-base text-red-500 transition-all hover:text-red-600" href="#">
+              Know More
+            </a>
           </Link>
         </div>
       </div>
@@ -147,19 +116,14 @@ const ArchiveMobile = () => {
         <div className=" w-4 h-4 bg-black rounded-full transition-all " />
         <div className="absolute w-56 h-48 ml-8 -mt-5">
           <h1>
-            TEDxJMI <span className="text-red-500">2019</span>
+            {data[2].theme} <span className="text-red-500">{data[2].year}</span>
           </h1>
-          <div className="text-sm mt-2 mb-5">
-            lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </div>
+          <div className="text-sm mt-2 mb-5">{data[2].description.substring(0, 60) + " . . . "}</div>
 
           <Link href="/archive/2019">
-          <a
-            className="text-base text-red-500 transition-all hover:text-red-600"
-            href="#"
-          >
-            Know More
-          </a>
+            <a className="text-base text-red-500 transition-all hover:text-red-600" href="#">
+              Know More
+            </a>
           </Link>
         </div>
       </div>
@@ -168,19 +132,14 @@ const ArchiveMobile = () => {
         <div className=" w-4 h-4 bg-black rounded-full transition-all " />
         <div className="absolute w-56 h-48 ml-8 -mt-5">
           <h1>
-            TEDxJMI <span className="text-red-500">2021</span>
+            {data[3].theme} <span className="text-red-500">{data[3].year}</span>
           </h1>
-          <div className="text-sm mt-2 mb-5">
-            lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </div>
+          <div className="text-sm mt-2 mb-5">{data[3].description.substring(0, 60) + " . . . "}</div>
 
           <Link href="/archive/2021">
-          <a
-            className="text-base text-red-500 transition-all hover:text-red-600"
-            href="#"
-          >
-            Know More
-          </a>
+            <a className="text-base text-red-500 transition-all hover:text-red-600" href="#">
+              Know More
+            </a>
           </Link>
         </div>
       </div>
@@ -193,7 +152,7 @@ const Partners = () => {
     <div className="bg-white rounded-2xl p-12 flex flex-col gap-12 min-h-400">
       <div className="font-Cinzel text-2xl mt-12">
         <div className=" md:text-center text-left">
-          <h3 className=''>Partners</h3>
+          <h3 className="">Partners</h3>
         </div>
         <div className="flex flex-wrap w-full items-center justify-around mt-12">
           <div>
