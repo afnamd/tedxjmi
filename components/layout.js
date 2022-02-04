@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Footer from "./footer";
 import Navbar from "./navbar";
+import NavbarMobile from "./navbarMobile";
 const Layout = ({ children }) => {
   return (
     <div className="Layout ">
@@ -16,9 +17,16 @@ const Layout = ({ children }) => {
         />
       </Head>
       <div className=" ml-auto mr-auto bg-black">
+        <div className="hidden md:block">
         <Navbar />
+        </div>
+        <div className="block md:hidden"> 
+        <NavbarMobile />
+        </div>
+        <div className="pt-20 bg-white md:pt-0">
         {children}
         <Footer />
+        </div>
       </div>
     </div>
   );
