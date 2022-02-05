@@ -42,7 +42,7 @@ function Top({ data }) {
           </Link>
         </div>
       </div>
-      <div className="flex-col items-center flex ">
+      <div className="flex-col items-center flex md:hidden">
         <span className="text-3xl">{data.year}</span>
         <span className="text-base md:text-3xl text-center">{data.theme}</span>
       </div>
