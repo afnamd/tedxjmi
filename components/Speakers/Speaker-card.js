@@ -9,8 +9,7 @@ function SpeakerCard() {
     y: "0px",
   });
   React.useEffect(() => {
-    if (card != null) {
-
+    const resizeListener = () => {
       const { x, y, height, width } = card.current.getBoundingClientRect();
 
       setShadow({
@@ -19,27 +18,39 @@ function SpeakerCard() {
         x: `${x}px`,
         y: `${y}px`,
       });
+  }
+
+  
+
+    if (card != null) {
+      const { x, y, height, width } = card.current.getBoundingClientRect();
+
+      setShadow({
+        width: `${width}px`,
+        height: `${height}px`,
+        x: `${x}px`,
+        y: `${y}px`,
+      });
+
+      setTimeout(() => {
+        resizeListener();
+      }, 100);
     }
 
-    const resizeListener = () => {
-        const { x, y, height, width } = card.current.getBoundingClientRect();
 
-        setShadow({
-          width: `${width}px`,
-          height: `${height}px`,
-          x: `${x}px`,
-          y: `${y}px`,
-        });
-    }
+
 
     // set resize listener
     window.addEventListener("resize", resizeListener);
-
     // clean up function
     return () => {
       window.removeEventListener("resize", resizeListener);
     };
   }, [card]);
+
+  React.useEffect(() => {
+    console.log(Shadow);
+  },[Shadow]);
 
   return (
     <div className="w-1/2 lg:w-1/4 md:p-8">
