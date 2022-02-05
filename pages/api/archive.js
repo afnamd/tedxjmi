@@ -11,8 +11,8 @@ export const data = [
       year: 2017,
       href: "/archive/2017",
     },
-    Gallery: "72157720150571856",
-    Teams: "72157720158869607",
+    Gallery: "72157720449305135",
+    Teams: "72157720396778344",
   },
   {
     year: 2017,
@@ -36,8 +36,8 @@ export const data = [
       "/static/images/TedxArchive/2017/Speaker/5.jpg",
       "/static/images/TedxArchive/2017/Speaker/6.jpg",
     ],
-    Gallery: "72157720150571856",
-    Teams: "72157720158869607",
+    Gallery: "72157720396639039",
+    Teams: "72157720400534536",
   },
   {
     year: 2019,
@@ -74,8 +74,8 @@ export const data = [
       year: 2019,
       href: "/archive/2019",
     },
-    Gallery: "72157720150571856",
-    Teams: "72157720158869607",
+    // Gallery: "72157720150571856",
+    // Teams: "72157720158869607",
   },
 ];
 

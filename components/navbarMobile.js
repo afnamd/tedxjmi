@@ -13,7 +13,7 @@ function NavbarMobile() {
   function Menu() {
     return (
       <div
-        class="absolute transition-all bg-white top-10 w-4/5 left-0 overflow-hidden "
+        className="absolute transition-all bg-white top-10 w-4/5 left-0 overflow-hidden "
         style={{
           height: isOpen ? "250px" : "0",
         }}
@@ -21,9 +21,9 @@ function NavbarMobile() {
         <ul className="list-none">
           {Nav.map((_, i) => {
             return (
-              <Link href={_.link}>
+              <Link key={_.link} href={_.link}>
                 <li
-                  class="text-base my-2 py-3 px-4 hover:bg-gray-100 transition-all "
+                  className="text-base my-2 py-3 px-4 hover:bg-gray-100 transition-all "
                   onClick={() => setIsOpen()}
                   style={{height:'50px'}}
                 >
