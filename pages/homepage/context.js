@@ -24,7 +24,7 @@ const Context = () => {
               together for everyone to see the horizon of perspectives.
             </div>
           </div>
-          <div className="pl-10 pr-10  flex flex-col gap-4 ">
+          <div className="pl-10 pr-10  flex flex-col gap-4 md:pt-0 pt-12">
             <div className="text-3xl md:text-4xl text-center md:text-left font-Cinzel">
               The TEDx Conference
             </div>

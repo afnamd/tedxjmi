@@ -21,8 +21,12 @@ function NavbarMobile() {
         <ul className="list-none">
           {Nav.map((_, i) => {
             return (
-              <Link href={_.link} >
-                <li class="font-semibold my-2 py-3 px-4 hover:bg-gray-100 transition-all " onClick={() => setIsOpen()}>
+              <Link href={_.link}>
+                <li
+                  class="text-base my-2 py-3 px-4 hover:bg-gray-100 transition-all "
+                  onClick={() => setIsOpen()}
+                  style={{height:'50px'}}
+                >
                   {_.name}
                 </li>
               </Link>
@@ -35,41 +39,46 @@ function NavbarMobile() {
 
   const Nav = [
     {
-      name: "About",
-      link: "/archive/2021"
+      name: "Home",
+      link: "/",
     },
     {
-      name: "Speaker",
-      link: "/speakers",
+      name: "About",
+      link: "/archive/2021",
     },
+    // {
+    //   name: "Speaker",
+    //   link: "/speakers",
+    // },
     {
       name: "Archive",
-      link: "/archive/2011"
+      link: "/archive/2011",
     },
     {
       name: "Contact",
-      link: "/contact"
-    }
+      link: "/contact",
+    },
   ];
   return (
     <div>
-      <div className="sm:hidden nav shadow-2xl z-50 fixed w-screen flex bg-white  font-Cinzel items-center justify-center  ">
-        <div className="sm:hidden flex flex-col items-start justify-center transition-all mr-auto hover:bg-gray-100 py-3 px-2 group w-2/3 z-50 "
+      <div className="sm:hidden nav shadow-2xl z-50 fixed w-screen flex bg-white h-12 font-Cinzel items-center justify-center  ">
+        <div
+          className="sm:hidden flex flex-col items-start justify-center h-full transition-all mr-auto hover:bg-gray-100 py-3 px-2 group  z-50 "
           onClick={() => setOpen()}
         >
-          <div className="flex items-center">
+          <div className="flex items-cente justify-center w-12">
             <GiHamburgerMenu />
-            <span
-              class="ml-2 font-semibold cursor-pointer"
-            >
-              Menu
-            </span>
+
             {Menu()}
           </div>
         </div>
         <div>
           <Link href="/">
-            <img className="w-24" src="https://i.ibb.co/ncZ8qLG/image.png" onClick={() => setIsOpen(false)}/>
+            <img
+              className="w-24"
+              src="https://i.ibb.co/ncZ8qLG/image.png"
+              onClick={() => setIsOpen(false)}
+            />
           </Link>
         </div>
       </div>
@@ -77,8 +86,8 @@ function NavbarMobile() {
         className="w-screen h-screen fixed top-0 left-0 bg-black transition-all"
         onClick={() => setIsOpen()}
         style={{
-            pointerEvents : isOpen ? null : "none",
-            opacity:  isOpen ? 0.5 : 0
+          pointerEvents: isOpen ? null : "none",
+          opacity: isOpen ? 0.5 : 0,
         }}
       />
     </div>

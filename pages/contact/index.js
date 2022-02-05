@@ -8,7 +8,7 @@ import {BiPhone} from 'react-icons/bi'
 function Contact() {
   return (
     <Layout>
-      <div className="bg-white font-Cinzel flex flex-col justify-center items-center">
+      <div className="bg-white font-Cinzel flex flex-col justify-center items-center p-3">
         <div className="py-4 flex flex-col justify-center items-center">
           <h1 className="text-5xl">Contact Us </h1>
           <p className="py-2">Feel Free to contact us</p>
