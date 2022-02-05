@@ -7,6 +7,7 @@
     "deploy": "gh-pages --dotfiles --dist out"
   },
   "dependencies": {
+    "axios": "^0.25.0",
     "formik": "^2.2.9",
     "next": "latest",
     "react": "^17.0.2",
