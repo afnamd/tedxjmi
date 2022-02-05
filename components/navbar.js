@@ -7,7 +7,7 @@ const Navbar = () => {
           <Link href={"/archive/2021"}>
             <div className="font-Cinzel p-4">About</div>
           </Link>
-          <Link href={"/archive/2021"}>
+          <Link href={"/speakers"}>
             <div className="font-Cinzel p-4">Speaker</div>
           </Link>
       </div>
