@@ -105,7 +105,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="font-sans mt-10 mb-5 flex md:border-t border-gray-900 text-sm  flex-col md:flex-row items-center md:justify-between justify-center">
-        <div>TEDxJMI 2021 Operating under license from TED™</div>
+        <div>TEDxJMI 2022 Operating under license from TED™</div>
         <div className="flex items-center gap-3 hover:ring-1 ring-white m-3 p-3 cursor-pointer">
           Made With
           <svg

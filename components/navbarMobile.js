@@ -44,7 +44,7 @@ function NavbarMobile() {
     },
     {
       name: "About",
-      link: "/archive/2021",
+      link: "/archive/2022",
     },
     // {
     //   name: "Speaker",
