@@ -44,7 +44,7 @@ const ImageGrid = ({data}) =>{
                             {
                                 [...data].map((gallery,j)=>{
                                 return j%gridCount===i?(
-                                    <div key={gallery.displayName} className="md:w-96 w-80 flex flex-col border relative overflow-hidden rounded-md">
+                                    <div key={gallery} className="md:w-96 w-80 flex flex-col border relative overflow-hidden rounded-md">
                                             <img className="sm:rounded-lg rounded-sm sm:box-border" src={gallery} onClick={(e) => {showImage(e,gallery)}}/>
                                     </div>
                                 ):null

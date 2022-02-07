@@ -3,7 +3,11 @@ import useWindowSize from "../../utils/winResize";
 import ImageShow from "./ImageShow";
 const Loader = () => {
   return (
-    <div className=" w-4/6 m-auto flex justify-center gap-1 flex-wrap animate-pulse">
+    <div className="w-full m-auto flex justify-center gap-1 flex-wrap animate-pulse">
+      <div className="w-52 h-52 bg-gray-200  rounded-md" />
+      <div className="w-52 h-52 bg-gray-200  rounded-md" />
+      <div className="w-52 h-52 bg-gray-200  rounded-md" />
+      <div className="w-52 h-52 bg-gray-200  rounded-md" />
       <div className="w-52 h-52 bg-gray-200  rounded-md" />
       <div className="w-52 h-52 bg-gray-200  rounded-md" />
       <div className="w-52 h-52 bg-gray-200  rounded-md" />
@@ -16,12 +20,13 @@ const Loader = () => {
 const AsyncImageGrid = ({ galleryId }) => {
   const [data, setData] = useState(null);
   useEffect(() => {
+    setData(null);
     fetch(
       `https://www.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=8f7e34cc57c58c6e98d6378955b17fab&gallery_id=${galleryId}&format=json&nojsoncallback=1`
     )
       .then((res) => res.json())
       .then((data) => setData(data.photos.photo));
-  }, []);
+  }, [galleryId]);
   const [gridCount, setGridCount] = useState(3);
   const [width] = useWindowSize();
   useEffect(() => {
@@ -71,8 +76,8 @@ const AsyncImageGrid = ({ galleryId }) => {
                 {[...data].map((gallery, j) => {
                   return j % gridCount === i ? (
                     <div
-                      key={gallery.displayName}
-                      className=" flex flex-col rounded-md w-full md:w-44  overflow-hidden "
+                      key={`${gallery.server}/${gallery.id}_${gallery.secret}`}
+                      className=" flex flex-col rounded-md w-full md:w-72  overflow-hidden "
                     >
                       <img
                         src={`https://farm${gallery.farm}.staticflickr.com/${gallery.server}/${gallery.id}_${gallery.secret}_m.jpg`}

@@ -6,9 +6,9 @@ const Venue = () => {
         className="relative gap-4 font-Cinzel flex justify-center flex-col items-center"
         style={{ filter: "blur(0)" }}
       >
-        <div className="text-5xl">Venue</div>
+        <div className="text-3xl md:text-5xl">Venue</div>
         <div className="flex flex-col items-center">
-          <div className="text-2xl">Dr. M. A. Ansari Auditorium,</div>
+          <div className="md:text-2xl">Dr. M. A. Ansari Auditorium,</div>
           <div>Jamia Millia Islamia</div>
         </div>
         <a target="_blank" href="https://goo.gl/maps/4Y14DhZe4Fu">

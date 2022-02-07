@@ -25,8 +25,8 @@ const Layout = ({ children }) => {
         </div>
         <div className="pt-20 bg-white md:pt-0">
         {children}
-        <Footer />
         </div>
+        <Footer />
       </div>
     </div>
   );

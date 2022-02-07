@@ -3,6 +3,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind screen;
 
 .bg{
     background-image: url("../public/static/images/landingPage-bg-image.jpg");background-repeat: no-repeat;background-size: cover;background-position: center
@@ -41,4 +42,11 @@
 
 .slick-next{
     right: 0px!important;
+
+}
+
+@media screen(md) {
+    .h90{
+        height:90vh
+    }
 }

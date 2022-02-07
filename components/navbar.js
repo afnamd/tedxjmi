@@ -3,8 +3,8 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <div className="flex justify-evenly items-center p-4 bg-white">
-      <div className="lg:flex hidden cursor-pointer">
-          <Link href={"/archive/2021"}>
+      <div className="md:flex hidden cursor-pointer">
+          <Link href={"/archive/2022"}>
             <div className="font-Cinzel p-4">About</div>
           </Link>
           <Link href={"/speakers"}>
