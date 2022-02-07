@@ -53,8 +53,8 @@ function NavbarMobile() {
   ];
   return (
     <div>
-      <div className="sm:hidden nav shadow-2xl z-50 fixed w-screen flex bg-white  font-Cinzel items-center justify-center  ">
-        <div className="sm:hidden flex flex-col items-start justify-center transition-all mr-auto hover:bg-gray-100 py-3 px-2 group w-2/3 z-50 "
+      <div className=" nav shadow-2xl z-50 fixed w-screen flex bg-white  font-Cinzel items-center justify-center  ">
+        <div className="md:hidden flex flex-col items-start justify-center transition-all mr-auto hover:bg-gray-100 py-3 px-2 group w-2/3 z-50 "
           onClick={() => setOpen()}
         >
           <div className="flex items-center">

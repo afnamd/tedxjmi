@@ -22,7 +22,7 @@ export default function Speaker(props){
 
     return(
         <>
-            <div className={`flex flex-col hidden md:block`}>
+            <div className={`flex flex-col hidden lg:block`}>
                 <h1 className={`ml-16 text-3xl`}>Speaker</h1>
 
                 <div className='grid grid-cols-3'>

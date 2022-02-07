@@ -12,18 +12,7 @@ function Speakers() {
 
   return (
     <Layout>
-      <div className="bg-white font-Cinzel py-8 px-10 ">
-        {/*<h1 className="text-2xl mb-10">Speakers</h1>*/}
-
-        {/*<div className="flex flex-wrap">*/}
-        {/*  {Array(10)*/}
-        {/*    .fill(0)*/}
-        {/*    .map((_, i) => {*/}
-        {/*      return (*/}
-        {/*          <SpeakerCard />*/}
-        {/*      );*/}
-        {/*    })}*/}
-        {/*</div>*/}
+      <div className="bg-white font-Cinzel py-0 px-10 ">
           <SpeakerDesktop data={data}/>
           <SpeakerMobile data={data}/>
 

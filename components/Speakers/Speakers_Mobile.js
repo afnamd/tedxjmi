@@ -8,14 +8,18 @@ import {AiOutlineLeft,AiOutlineRight} from 'react-icons/ai';
 
 const SpeakerCard = (props) => { 
   return (
-    <div className={`flex flex-col justify-center items-center py-10`} key={props.key}>
-            <img className='w-56 h-56 my-5 rounded-full transition-all' src={props.data.img} />
-            <h2 className={`text-2xl font-bold`}>{props.data.name}</h2>
-            <h4 className='mt-1 text-gray-400'>{props.data.title}</h4>
-            <p className='text-center text-sm my-4 mx-5'>
+    <div className={`flex sm:flex-row flex-col justify-center items-center py-10 sm:py-0`} key={props.key}>
+            <img className='w-56 h-56 sm:w-32 sm:h-32 my-5 rounded-full transition-all sm:ml-10' src={props.data.img} />
+            <div className='flex-col mx-5 justify-center items-center flex-1 sm:text-center'>
+              <h2 className={`text-2xl sm:whitespace-nowrap sm:text-base font-bold`}>{props.data.name}</h2>
+              <h4 className='mt-1 text-gray-400'>{props.data.title}</h4>
+              <Socials className='my-2 hidden sm:flex' instagram={''} twitter={``} facebook={``} />
+
+            </div>
+            <p className='text-center text-sm sm:text-xs my-4 mx-5 '>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
             </p>            
-            <Socials className='flex my-2' instagram={''} twitter={``} facebook={``} />
+            <Socials className='flex my-2 sm:hidden' instagram={''} twitter={``} facebook={``} />
     </div>
   )
 }
@@ -59,11 +63,11 @@ function Speakers(props) {
       })}
     </Slider>
 
-    <div className='mt-16 grid grid-cols-4'>
+    <div className='mt-16 grid grid-cols-4 pb-10'>
       {Speakers.map((_,i) => {
         return (
-          <div className='m-2'>
-            <img src={_.img} className={`rounded-full ${Counter === i ? "shadow-xl shadow-red-500/20" : ""}`} />
+          <div className='m-2 flex justify-center items-center'>
+            <img src={_.img} className={`sm:w-20 rounded-full ${Counter === i ? "shadow-xl shadow-red-500/20" : ""}`} />
           </div>
         )
       })}
