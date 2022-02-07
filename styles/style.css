@@ -38,11 +38,12 @@
 
 .slick-prev{
     left: 0px!important;
+    @apply absolute z-50
 }
 
 .slick-next{
     right: 0px!important;
-
+    @apply absolute z-50
 }
 
 @media screen(md) {
