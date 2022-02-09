@@ -7,22 +7,16 @@ const Footer = () => {
     <div className="text-white  ml-auto mr-auto w-11/12 2xl:w-10/12 font-Cinzel pt-10 md:pl-10 md:pr-10 flex flex-col gap-10 bg-black">
       <div className="flex gap-12 md:items-start items-center flex-col md:flex-row md:justify-between">
         <div className="flex flex-col gap-3">
-          <div className=" font-bold text-center md:text-left text-xl md:text-2xl">Jamia Millia Islamia, New Delhi</div>
-          <Link href="/teams"> Team </Link>
-          <a target="_blank" href="https://goo.gl/maps/4Y14DhZe4Fu">
-            <div className="flex items-center gap-3 cursor-pointer hover:ring-1 p-2 ring-white">
-              <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M15.5 2.5835C10.5012 2.5835 6.45831 6.62641 6.45831 11.6252C6.45831 18.4064 15.5 28.4168 15.5 28.4168C15.5 28.4168 24.5417 18.4064 24.5417 11.6252C24.5417 6.62641 20.4987 2.5835 15.5 2.5835ZM15.5 14.8543C13.7175 14.8543 12.2708 13.4077 12.2708 11.6252C12.2708 9.84266 13.7175 8.396 15.5 8.396C17.2825 8.396 18.7291 9.84266 18.7291 11.6252C18.7291 13.4077 17.2825 14.8543 15.5 14.8543Z"
-                  fill="white"
-                />
-              </svg>
-              <div className="flex text-sm flex-col">
-                <div className=" underline">Dr. M. A. Ansari Auditorium, Jamia Millia Islamia</div>
-                <div className=" font-sans">Where is This?</div>
-              </div>
-            </div>
-          </a>
+          <div className=" font-bold text-center md:text-left text-xl md:text-2xl">
+            Jamia Millia Islamia, New Delhi
+          </div>
+
+          <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3504.3190047509634!2d77.2837465!3d28.560182!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x35d6f5f87261b277!2sDr.%20MA%20Ansari%20Auditorium!5e0!3m2!1sen!2sin!4v1644306584974!5m2!1sen!2sin" 
+          className="w-80 h-80 md:w-96 grayscale"
+          loading="lazy">
+
+          </iframe>
         </div>
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-2 ">

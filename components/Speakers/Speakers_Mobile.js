@@ -17,7 +17,7 @@ const SpeakerCard = (props) => {
         src={props.data.img}
       />
       <div className="flex-col mx-5 justify-center items-center flex-1 sm:text-center">
-        <h2 className={`text-2xl sm:whitespace-nowrap sm:text-base font-bold`}>
+        <h2 className={`text-2xl sm:whitespace-nowrap sm:text-base`}>
           {props.data.name}
         </h2>
         <h4 className="mt-1 text-gray-400">{props.data.title}</h4>
@@ -29,14 +29,13 @@ const SpeakerCard = (props) => {
         />
       </div>
       <p className="text-center text-sm sm:text-xs my-4 mx-5 ">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna
+        {props.data.bio}
       </p>
       <Socials
         className="flex my-2 sm:hidden"
-        instagram={""}
-        twitter={``}
-        facebook={``}
+        instagram={props.data.socials.instagram}
+        twitter={props.data.socials.twitter}
+        facebook={props.data.socials.facebook}
       />
     </div>
   );
@@ -57,7 +56,7 @@ function Speakers(props) {
   const [Speakers, setSpeakers] = useState(props.data);
   const [Counter, setCounter] = useState(0);
   const sliderRef = useRef(null)
-  const slickGoTo = (i) =>{
+  const slickGoTo = (i) => {
     setCounter(i)
     sliderRef.current.slickGoTo(i)
   }
@@ -81,17 +80,16 @@ function Speakers(props) {
           return <SpeakerCard data={_} key={i} />;
         })}
       </Slider>
-      
+
       <div className="mt-16 grid grid-cols-4 pb-10">
         {Speakers.map((_, i) => {
           return (
             <div className={`m-2 flex justify-center items-center `}>
               <img
                 src={_.img}
-                onClick={()=>slickGoTo(i)}
-                className={`sm:w-20 rounded-full ${
-                  Counter === i ? "shadow-xl ring-4  shadow-red-500/20" : ""
-                }`}
+                onClick={() => slickGoTo(i)}
+                className={`sm:w-20 rounded-full ${Counter === i ? "shadow-xl ring-4  shadow-red-500/20" : ""
+                  }`}
               />
             </div>
           );
