@@ -8,32 +8,29 @@ const Card = (props) => {
             <h2 className={`text-2xl`}>{props.data.name}</h2>
             <h4 className='mt-1 text-gray-400'>{props.data.title}</h4>
             <p className='text-center text-sm my-4 mx-5'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            </p>            
-            <Socials className='flex my-2' instagram={''} twitter={``} facebook={``} />
+                {props.data.bio}
+            </p>
+            <Socials className='flex my-2' instagram={props.data.socials.instagram} twitter={props.data.socials.twitter} facebook={props.data.socials.facebook} />
         </div>
-    )   
+    )
 }
 
-export default function Speaker(props){
+export default function Speaker(props) {
 
-
-    
-
-    return(
+    return (
         <>
             <div className={`flex flex-col hidden md:block`}>
                 <h1 className={`ml-16 text-3xl`}>Speaker</h1>
 
                 <div className='grid grid-cols-3'>
-                    {props.data.map((item,key) => {
-                        return(
-                            <Card data ={item} key={key}/>
+                    {props.data.map((item, key) => {
+                        return (
+                            <Card data={item} key={key} />
                         )
                     })}
                 </div>
 
-                
+
 
             </div>
         </>

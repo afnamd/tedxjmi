@@ -36,7 +36,7 @@ function noSpeaker() {
         }}
       >
           <div>
-            <h1 className="text-xl italic opacity-50">Speakers Will Be Announced Soon!</h1>
+            <h1 className="text-3xl text-red-500">Speakers Will Be Announced Soon!</h1>
           </div>
       </div>
     </>
