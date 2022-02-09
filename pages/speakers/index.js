@@ -53,8 +53,10 @@ function Speakers() {
     <Layout>
       <div className="bg-white font-Cinzel py-0 px-10 ">
           {data.length == 0 ? noSpeaker() : <>
-            <SpeakerDesktop data={data}/>
-            <SpeakerMobile data={data}/>
+            <div className="pb-32 pt-10 bg-white">
+              <SpeakerDesktop data={data}/>
+              <SpeakerMobile data={data}/>
+            </div>
           </>}
 
       </div>
