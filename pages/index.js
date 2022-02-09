@@ -4,14 +4,14 @@ import Footer from "../components/footer";
 import Landingpage from "./homepage/landingpage";
 import Navbar from "../components/navbar";
 import Partners from "./homepage/partners";
-import Venue from "./homepage/venue";
+import Tickets from "./homepage/tickets";
 
 export default function Home() {
   return (
     <Layout>
       <Landingpage />
       <Context />
-      <Venue />
+      <Tickets />
       <Partners />
     </Layout>
   )

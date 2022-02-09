@@ -50,3 +50,5 @@ export const data = [
         img: 'https://100k-faces.glitch.me/random-image',
     },
 ];
+
+// export const data = [];
