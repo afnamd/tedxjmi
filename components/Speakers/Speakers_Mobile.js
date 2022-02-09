@@ -17,7 +17,7 @@ const SpeakerCard = (props) => {
         src={props.data.img}
       />
       <div className="flex-col mx-5 justify-center items-center flex-1 sm:text-center">
-        <h2 className={`text-2xl sm:whitespace-nowrap sm:text-base font-bold`}>
+        <h2 className={`text-2xl sm:whitespace-nowrap sm:text-base`}>
           {props.data.name}
         </h2>
         <h4 className="mt-1 text-gray-400">{props.data.title}</h4>
