@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 const Venue = () => {
 	return (
@@ -19,12 +20,13 @@ const Venue = () => {
 						<span className="text-red-500">27th</span> of March
 					</p>
 
-					<button
-						className="mt-10 px-6 py-3 bg-gray-300 text-white"
-						disabled
+					<Link
+						href="dashbaord/auth"						
 					>
-						Book Your Tickets
-					</button>
+						<div className="mt-10 px-6 py-3 bg-black hover:opacity-90 cursor-pointer rounded-md font-mono text-white">
+							Book Your Tickets
+						</div>
+					</Link>
 					<p className="text-xs mt-4 opacity-30">
 						Tickets aren't available right now. Check back later!
 					</p>

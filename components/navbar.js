@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+
 const Navbar = () => {
   return (
     <div className="flex justify-evenly items-center p-4 bg-white">
@@ -24,6 +25,7 @@ const Navbar = () => {
           <Link href={"/contact/"}>
             <div className="font-Cinzel p-4">Contact</div>
           </Link>
+          
       </div>
     </div>
   );
