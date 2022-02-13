@@ -4,16 +4,28 @@ import auth from "../api/auth";
 import Footer from "./footer";
 import Navbar from "./navbar";
 import NavbarMobile from "./navbarMobile";
-
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from "recoil";
-
+import { userState as userState } from "../components/atoms";
+import { useRecoilState } from 'recoil'
 const Layout = ({ children }) => {
+  const [user, setUser] = useRecoilState(userState);
+  useEffect(async()=>{
+    if(window.isFetched)
+      return
+    else
+      window.isFetched = true
+    localStorage.setItem('csrf', (await auth.handshake()).data.csrf);
+    let res = await auth.status()
+    const {name, email, picture, alreadyHaveATicket} = res.data
+    if(res.data.status)
+      setUser({
+        name, email, picture, alreadyHaveATicket,
+        isAuth: true,
+      })
+    else
+      setUser({
+        isAuth: false
+      })
+  },[])
   return (
       <div className="Layout ">
         <Head>

@@ -3,9 +3,10 @@ import { atom } from "recoil";
 export const userState = atom({
     key: "userState",
     default: {
-        isAuth: false,
+        isAuth: null,
         name: '',
         email: '',
-        img: ''
+        picture: '',
+        alreadyHaveATicket: false
     }
 });

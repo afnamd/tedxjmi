@@ -3,20 +3,26 @@ import { GoogleLogin } from 'react-google-login';
 import { useEffect, useState } from "react";
 import auth from "../../api/auth";
 import Razorpay from "../../components/dashboard/razorpay";
+import { useRecoilState } from "recoil";
+import { userState as userState } from "../../components/atoms";
+import { ToastContainer, toast } from "react-toastify";
 
+const LoadingScreen = () =>{
+    return(
+        <div className="fixed h-screen w-screen flex justify-center items-start">
+            Loading
+        </div>
+    )
+}
 export default function Auth() {
-    const [user, setUser] = useState(null)
-    useEffect(async()=>{
-        localStorage.setItem('csrf', (await auth.handshake()).data.csrf);
-        let res = await auth.status()
-        if(res.data.status)
-            setUser(res.data)
-    },[])
+    const [user, setUser] = useRecoilState(userState);
+    
     const onSuccess = async(data) =>{
         try{
-            setUser(data)
             console.log(data)
-            let res = await auth.login(data.tokenId)
+            await auth.login(data.tokenId)
+            toast.success("Successfully logged in");
+            setUser(data)
         }catch(err){
             console.log(err)
         }
@@ -28,17 +34,22 @@ export default function Auth() {
         <Layout>
             <div className="h-screen flex justify-center items-start">
                 {
-                    user?
-                    <Razorpay />:
+                    user.isAuth===null?
+                    <LoadingScreen />:
+                    user.isAuth===false?
                     <GoogleLogin
                         clientId={process.env.NEXT_PUBLIC_GOOGLE_OAUTH_CLIENT}
                         buttonText="Login"
                         onSuccess={onSuccess}
                         onFailure={onFailure}
                         cookiePolicy={'single_host_origin'}
-                    />
+                    />:
+                    <Razorpay />
+                    
                 }
             </div>
+      <ToastContainer />
+
         </Layout>
     )
 }

@@ -14,7 +14,7 @@ const Navbar = () => {
       </div>
       <div className="cursor-pointer">
           <Link href="/">
-              <img src="./static/images/Tedxjmi.png" className="h-10 " />
+              <img src="/static/images/Tedxjmi.png" className="h-10 " />
           </Link>
       </div>
 

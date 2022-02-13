@@ -1,41 +1,10 @@
 import React, { useState } from "react";
-import GoogleLogin from "react-google-login";
 
-import { useRecoilState } from "recoil";
+import Link from "next/link";
 import { userState as userState } from "../../components/atoms";
-import { useRouter } from "next/router";
-
-const client_id =
-  "583458633641-jse8n244arnnag0p64qqkl6fkrerl69d.apps.googleusercontent.com";
-
-import { ToastContainer, toast } from "react-toastify";
-
+import {  useRecoilState } from 'recoil'
 const Venue = () => {
   const [user, setUser] = useRecoilState(userState);
-  const [ticket, setTicket] = useState(true);
-
-  const router = useRouter();
-
-  const responseGoogle = (response) => {
-    if (response.error) {
-      toast.error("Please try again");
-    } else {
-      toast.success("Successfully logged in");
-      const userData = {
-        isAuth: true,
-        name: response.profileObj.name,
-        email: response.profileObj.email,
-        img: response.profileObj.imageUrl,
-      };
-      setUser(userData);
-      router.push("/tickets");
-    }
-  };
-
-  const handleTicket = () => {
-    console.log(user);
-    if (user.isAuth) router.push("/tickets");
-  };
 
   return (
     <div className="bg-black relative venueBg flex items-center justify-center ">
@@ -52,31 +21,25 @@ const Venue = () => {
           <p className="mt-7 text-3xl">
             <span className="text-red-500">27th</span> of March
           </p>
-
-          <GoogleLogin
-            clientId={client_id}
-            buttonText="Login"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={"single_host_origin"}
-            render={(renderProps) => (
-              <button
-                className={`mt-10 px-6 py-3 ${
-                  ticket ? "bg-red-500" : "bg-gray-300"
-                } text-white focus:bg-red-800 `}
-                disabled={ticket ? false : true}
-                onClick={renderProps.onClick}
+              <Link
+                href="dashbaord/auth"                
               >
-                Book Your Tickets
-              </button>
-            )}
-          />
+                <button
+                  className={`mt-10 px-6 py-3 font-mono bg-black text-white focus:bg-red-800 `}
+                >
+                  {
+                    user.alreadyHaveATicket?
+                    'login':
+                    'Book Your Tickets'
+                  }
+                </button>
+              </Link>
+
           <p className="text-xs mt-4 opacity-30">
             Tickets aren't available right now. Check back later!
           </p>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

@@ -9,9 +9,9 @@ import { userState } from "../../components/atoms";
 function Tickets() {
   const userData = useRecoilValue(userState);
   const rows = ["name", "email"];
+  const [Phone, setPhone] = useState('');
   const [isAuth, setIsAuth] = useState(false);
   const router = useRouter();
-  const [Phone, setPhone] = useState('');
 
   const toggleAuth = () => {
     setIsAuth(!isAuth);
@@ -19,6 +19,7 @@ function Tickets() {
 
   useEffect(() => {
     console.log(userData);
+    console.log(11, userData)
     if (userData.isAuth) {
       setIsAuth(true);
     } else {
