@@ -8,9 +8,7 @@ const config = [{
 class auth{
     static handshake = async() =>{
         try{
-            let res = await xhr.get(`${process.env.NEXT_PUBLIC_HOST}/auth/handshake`, ...config);
-            console.log(res.data.csrf, localStorage.getItem('csrf'))
-            localStorage.setItem('csrf', res.data.csrf)
+            return await xhr.get(`${process.env.NEXT_PUBLIC_HOST}/auth/handshake`, {withCredentials: true});
         }catch(err){
             console.log(err)
             alert('something went wrong, please refresh the page')

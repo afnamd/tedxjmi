@@ -7,6 +7,7 @@ import Razorpay from "../../components/dashboard/razorpay";
 export default function Auth() {
     const [user, setUser] = useState(null)
     useEffect(async()=>{
+        localStorage.setItem('csrf', (await auth.handshake()).data.csrf);
         let res = await auth.status()
         if(res.data.status)
             setUser(res.data)
