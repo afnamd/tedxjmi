@@ -1,4 +1,6 @@
 import Head from "next/head";
+import { useEffect } from "react";
+import auth from "../api/auth";
 import Footer from "./footer";
 import Navbar from "./navbar";
 import NavbarMobile from "./navbarMobile";
@@ -12,6 +14,14 @@ import {
 } from "recoil";
 
 const Layout = ({ children }) => {
+  useEffect(()=>{
+    try{
+      auth.handshake()
+    }catch(err){
+      console.log(err)
+    }
+
+  },[])
   return (
       <div className="Layout ">
         <Head>
