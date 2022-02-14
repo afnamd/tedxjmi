@@ -22,7 +22,7 @@ export default function Auth() {
             console.log(data)
             await auth.login(data.tokenId)
             toast.success("Successfully logged in");
-            setUser(data)
+            setUser(data.profileObj);
         }catch(err){
             console.log(err)
         }

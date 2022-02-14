@@ -18,8 +18,6 @@ function Tickets() {
   };
 
   useEffect(() => {
-    console.log(userData);
-    console.log(11, userData)
     if (userData.isAuth) {
       setIsAuth(true);
     } else {
