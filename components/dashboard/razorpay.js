@@ -139,7 +139,7 @@ export default function () {
         couponCode: couponCode
       };
       const res = await ticket.paymentInitiate(data);
-
+      console.log(res.data);
       const {amount} = res.data;
       createOrder(amount);
 
