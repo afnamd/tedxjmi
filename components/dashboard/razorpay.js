@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ticket from "../../api/ticket";
 import { userState } from "../../components/atoms";
 import { useRecoilValue } from "recoil";
 import ReCAPTCHA from "react-google-recaptcha";
+import axios from "axios";
 
 function loadScript(src) {
   return new Promise((resolve) => {
@@ -29,6 +30,7 @@ export default function () {
     ID: ""
   });
   const [couponCode,setcouponCode] = useState("");
+  const [amount,setamount] = useState(1000);
 
   const rows = ["name", "email"];
   const [Phone, setPhone] = useState("");
@@ -145,9 +147,31 @@ export default function () {
       console.log(err);
       throw err;
     }
-
-
   };
+
+  let cancelToken;  
+  useEffect(async () => {
+    const data = {
+      counpon_code : couponCode,
+      JMIID: JMI.ID
+    }
+    if(typeof cancelToken != typeof undefined){
+      cancelToken.cancel("Operation Cancelled due to new request");
+    }
+
+    try {
+      const res = await ticket.getTicketPrice(data);
+      console.log("Result : ",res, data);
+      if (res.data.status) {
+        setamount(res.data.amount);
+      }
+      
+    } catch (err){
+      console.log(err);
+      throw err;
+    }
+
+  },[JMI,couponCode]);
 
   return (
     <>
@@ -223,7 +247,7 @@ export default function () {
                 onClick={(e) => paymentHandler(e)}
                 className={`p-3 bg-red-500 text-white shadow-lg shadow-red-500/10 hover:shadow-red-500/30 transition-all`}
               >
-                Pay Now
+                Pay {amount}
               </button>
             </div>
           </div>
