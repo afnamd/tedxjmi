@@ -32,7 +32,7 @@ export default function Auth() {
     }
     return (
         <Layout>
-            <div className="h-screen flex justify-center items-start">
+            <div className="min-h-screen flex justify-center items-start">
                 {
                     user.isAuth===null?
                     <LoadingScreen />:

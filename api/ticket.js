@@ -12,5 +12,8 @@ class ticket{
     static paymentSuccess = (data) =>{
         return xhr.post(`${process.env.NEXT_PUBLIC_HOST}/ticket/payment-success/`,  {...data}, ...config)
     }
+    static paymentInitiate = (data) => {
+        return xhr.post(`${process.env.NEXT_PUBLIC_HOST}/ticket/payment-initiate/`,  {...data}, ...config)
+    }
 }
 export default ticket
