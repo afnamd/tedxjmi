@@ -3,7 +3,7 @@ import ticket from "../../api/ticket";
 import { userState } from "../../components/atoms";
 import { useRecoilState } from "recoil";
 import ReCAPTCHA from "react-google-recaptcha";
-import {loadScript, createOrder} from '../../utils'
+import { loadScript, createOrder } from '../../utils'
 import LoadingScreen from "../loading_screen";
 import LoadingCircle from "../loading_circle";
 import Link from "next/link";
@@ -11,7 +11,7 @@ import auth from "../../api/auth";
 
 
 const TESTKEY = "6LfINnkeAAAAAOH8YfXAzYOwPU48yFeQuTdk_f95";
-const Input = ({ label, defaultValue = "", onChange = () => {} }) => {
+const Input = ({ label, defaultValue = "", onChange = () => { } }) => {
   const [focus, setFocus] = useState(false);
   const [value, setValue] = useState(defaultValue);
   const handleChange = (value) => {
@@ -21,11 +21,10 @@ const Input = ({ label, defaultValue = "", onChange = () => {} }) => {
   return (
     <div class="w-full flex flex-col p-3 gap-2 relative transition-all">
       <span
-        className={`absolute left-4 duration-100 bg-white pl-2 pr-2 ${
-          focus || value
-            ? "top-1 left-7 text-xs text-gray-500 z-50"
-            : "z-0  top-6 left-7 text-gray-500"
-        }`}
+        className={`absolute left-4 duration-100 bg-white pl-2 pr-2 ${focus || value
+          ? "top-1 left-7 text-xs text-gray-500 z-50"
+          : "z-0  top-6 left-7 text-gray-500"
+          }`}
       >
         {label}
       </span>
@@ -50,14 +49,18 @@ export default function () {
     ID: "",
   });
   const [couponCode, setcouponCode] = useState("");
-  const [amount, setamount] = useState(1000);
+  const [amount, setamount] = useState({
+    base: 1000,
+    final: 1000
+  });
 
+  const [discountData, setdiscountData] = useState([]);
   const rows = ["name", "email"];
   const [Phone, setPhone] = useState("");
   const [userData, setUserData] = useRecoilState(userState);
-  const [paymentStatus,setPaymentStatus] = useState({
+  const [paymentStatus, setPaymentStatus] = useState({
     msg: 'nothing'
-  })  
+  })
   const [loading, setLoading] = useState(false)
 
   const JMIStudentHandler = (e, type) => {
@@ -74,12 +77,12 @@ export default function () {
     }
   };
   console.log(loading, !userData.isAuth)
-  useEffect(()=>{
-    if(paymentStatus.msg==='rejected')
+  useEffect(() => {
+    if (paymentStatus.msg === 'rejected')
       alert('something went wrong')
     console.log(paymentStatus)
-  },[paymentStatus]);
-  const paymnetSuccessCB = (data) =>{
+  }, [paymentStatus]);
+  const paymnetSuccessCB = (data) => {
     setPaymentStatus(data)
   }
 
@@ -106,7 +109,7 @@ export default function () {
       const res = await ticket.paymentInitiate(data);
       console.log(res.data);
       const { amount } = res.data;
-      setPaymentStatus({msg: 'processing'})
+      setPaymentStatus({ msg: 'processing' })
       res = await createOrder(amount, paymnetSuccessCB);
     } catch (err) {
       console.log(err);
@@ -117,7 +120,7 @@ export default function () {
   let cancelToken;
 
   useEffect(async () => {
-    const data = {
+    const senddata = {
       counpon_code: couponCode,
       JMIID: JMI.ID,
     };
@@ -125,33 +128,42 @@ export default function () {
       cancelToken.cancel("Operation Cancelled due to new request");
     }
 
+    console.log(senddata)
+
     try {
       setLoading(true)
-      const res = await ticket.getTicketPrice(data);
+      const res = await ticket.getTicketPrice(senddata);
       setLoading(false)
-      
       console.log("Result : ", res, data);
-      if (res.data.status) {
-        setamount(res.data.amount);
-      }
+      const { data } = res;
+
+      console.log(data);
+
+      setdiscountData(data.data.discount);
+      setamount({
+        ...amount,
+        final: data.data.finalPrice
+      })
+
+
     } catch (err) {
       console.log(err);
       throw err;
     }
   }, [JMI, couponCode]);
-  const handleLogout = async() =>{
-    setUserData({...userData, isAuth: null})
-    try{
+  const handleLogout = async () => {
+    setUserData({ ...userData, isAuth: null })
+    try {
       await auth.logout()
-      setUserData({isAuth: false})
-    }catch(e){
-      setUserData({...userData, isAuth: true})
+      setUserData({ isAuth: false })
+    } catch (e) {
+      setUserData({ ...userData, isAuth: true })
     }
   }
   return (
     <>
       {
-        (paymentStatus.msg==='processing' || !userData.isAuth)&&
+        (paymentStatus.msg === 'processing' || !userData.isAuth) &&
         <LoadingScreen />
       }
       <div
@@ -165,7 +177,7 @@ export default function () {
           >
             Checkout Page
           </h1>
-          <button className="absolute right-5 top-7 hover:underline" onClick={()=>handleLogout()}>Logout</button>
+          <button className="absolute right-5 top-7 hover:underline" onClick={() => handleLogout()}>Logout</button>
           <div
             className={`flex flex-col w-full p-2 bg-white items-center pb-10`}
           >
@@ -201,11 +213,10 @@ export default function () {
                 </label>
               </div>
               <div
-                className={`w-full ${
-                  JMI.status
-                    ? " opacity-100 pointer-events-auto mt-4"
-                    : "-mt-20 opacity-0 pointer-events-none"
-                } transition-all outline-none`}
+                className={`w-full ${JMI.status
+                  ? " opacity-100 pointer-events-auto mt-4"
+                  : "-mt-20 opacity-0 pointer-events-none"
+                  } transition-all outline-none`}
               >
                 <Input
                   label="Enter your JMI Application Number"
@@ -223,34 +234,46 @@ export default function () {
               Summary
             </h1>
             {
-              loading&&
+              loading &&
               <LoadingCircle />
             }
             <div className={`flex flex-col w-full px-8 gap-1 text-gray-700 `}>
-              <div className="flex justify-between">
+              <div className="flex justify-between text-black/40">
                 <div>Base Price</div>
-                <div>{amount}Rs</div>
+                <div>{amount.base}Rs</div>
               </div>
-              <div className="flex justify-between">
-                <div>Coupun Discount</div>
-                <div>{amount}Rs</div>
+
+              {
+                discountData.map((item, index) => {
+                  return (
+                    <div key={index} className="flex justify-between text-green-600">
+                      <div>{item.type}</div>
+                      <div><span className={`mr-1`}>-</span>{item.amount}Rs</div>
+                    </div>
+                  )
+                })
+              }
+              <hr className={`border-t border-red-500/60`} />
+              <div className="flex justify-between text-red-500">
+                <div>Final Discount</div>
+                <div>{amount.final}Rs</div>
               </div>
             </div>
           </div>
         </div>
-          <div className=" p-4 w-full items-center relative flex justify-around bg-white shadow-inner">
-            <Link href="/">
-              <div className="py-2 px-4 cursor-pointer text-red-900">
-                Cancle
-              </div>
-            </Link>
-            <button
-              onClick={(e) => paymentHandler(e)}
-              className={`bg-black h-12 text-white px-12 py-3 transition-all`}
-            >
-              Checkout
-            </button>
-          </div>
+        <div className=" p-4 w-full items-center relative flex justify-around bg-white shadow-inner">
+          <Link href="/">
+            <div className="py-2 px-4 cursor-pointer text-red-900">
+              Cancel
+            </div>
+          </Link>
+          <button
+            onClick={(e) => paymentHandler(e)}
+            className={`bg-red-500 rounded-md h-12 text-white px-12 py-3 transition-all`}
+          >
+            Checkout
+          </button>
+        </div>
       </div>
     </>
   );
