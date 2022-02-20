@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Lora&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Lora&display=swap&family=Roboto:wght@100;400;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -51,3 +50,41 @@
         height:90vh;
     }
 }
+:root {
+    --animate-duration: 150ms;
+    --animate-delay: 150ms;
+    --animate-repeat: 150ms;
+}
+.animate__animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-duration: var(--animate-duration);
+    animation-duration: var(--animate-duration);
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+@-webkit-keyframes slideInRight{0%{-webkit-transform:translate3d(80%,0,0);transform:translate3d(80%,0,0);visibility:visible}to{-webkit-transform:translateZ(0);transform:translateZ(0)}}@keyframes slideInRight{0%{-webkit-transform:translate3d(80%,0,0);transform:translate3d(80%,0,0);visibility:visible}to{-webkit-transform:translateZ(0);transform:translateZ(0)}}.animate__slideInRight{-webkit-animation-name:slideInRight;animation-name:slideInRight}
+.animate-right{position:relative;animation:animateright 0.1s}@keyframes animateright{from{right:-50px;opacity:0} to{right:0;opacity:1}}
+.loader {
+    border: 8px solid #e6e6e6;
+    border-radius: 50%;
+    border-top: 8px solid #7a7a7a;
+    width: 64px;
+    height: 64px;
+    -webkit-animation: spin 1s linear infinite; /* Safari */
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .mahinput {
+    @apply p-3 rounded-xl outline-none border
+  }

@@ -8,7 +8,9 @@ const config = [{
 class auth{
     static handshake = async() =>{
         try{
-            return await xhr.get(`${process.env.NEXT_PUBLIC_HOST}/auth/handshake`, {withCredentials: true});
+            let res = await xhr.get(`${process.env.NEXT_PUBLIC_HOST}/auth/handshake`, {withCredentials: true});
+            localStorage.setItem('csrf', res.data.csrf);
+            return res
         }catch(err){
             console.log(err)
             alert('something went wrong, please refresh the page')
@@ -19,6 +21,11 @@ class auth{
     }
     static login = (token) =>{
         return xhr.post(`${process.env.NEXT_PUBLIC_HOST}/auth/signin/`,  {token}, ...config)
+    }
+    static logout = async() =>{
+        let res = await xhr.post(`${process.env.NEXT_PUBLIC_HOST}/auth/logout/`,  {}, ...config)
+        this.handshake()
+        return res
     }
 }
 export default auth

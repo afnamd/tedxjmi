@@ -1,122 +1,88 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ticket from "../../api/ticket";
 import { userState } from "../../components/atoms";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import ReCAPTCHA from "react-google-recaptcha";
-import axios from "axios";
+import {loadScript, createOrder} from '../../utils'
+import LoadingScreen from "../loading_screen";
+import LoadingCircle from "../loading_circle";
+import Link from "next/link";
+import auth from "../../api/auth";
 
-function loadScript(src) {
-  return new Promise((resolve) => {
-    const script = document.createElement("script");
-    script.src = src;
-    script.onload = () => {
-      resolve(true);
-    };
-    script.onerror = () => {
-      resolve(false);
-    };
-    document.body.appendChild(script);
-  });
-}
 
-const TESTKEY = '6LfINnkeAAAAAOH8YfXAzYOwPU48yFeQuTdk_f95';
-
+const TESTKEY = "6LfINnkeAAAAAOH8YfXAzYOwPU48yFeQuTdk_f95";
+const Input = ({ label, defaultValue = "", onChange = () => {} }) => {
+  const [focus, setFocus] = useState(false);
+  const [value, setValue] = useState(defaultValue);
+  const handleChange = (value) => {
+    setValue(value);
+    onChange(value);
+  };
+  return (
+    <div class="w-full flex flex-col p-3 gap-2 relative transition-all">
+      <span
+        className={`absolute left-4 duration-100 bg-white pl-2 pr-2 ${
+          focus || value
+            ? "top-1 left-7 text-xs text-gray-500 z-50"
+            : "z-0  top-6 left-7 text-gray-500"
+        }`}
+      >
+        {label}
+      </span>
+      <input
+        className="z-10 mahinput"
+        style={{ backgroundColor: "rgba(255, 242, 0, 0)" }}
+        type="text"
+        value={value}
+        onFocus={() => setFocus(true)}
+        onBlur={() => {
+          setFocus(false);
+        }}
+        onChange={(e) => handleChange(e.target.value)}
+      />
+    </div>
+  );
+};
 export default function () {
-
-  const [loading, setLoading] = useState(false);
   const [captcha, setcaptcha] = useState(false);
-  const [JMI,setJMI] = useState({
+  const [JMI, setJMI] = useState({
     status: false,
-    ID: ""
+    ID: "",
   });
-  const [couponCode,setcouponCode] = useState("");
-  const [amount,setamount] = useState(1000);
+  const [couponCode, setcouponCode] = useState("");
+  const [amount, setamount] = useState(1000);
 
   const rows = ["name", "email"];
   const [Phone, setPhone] = useState("");
-  const userData = useRecoilValue(userState);
+  const [userData, setUserData] = useRecoilState(userState);
+  const [paymentStatus,setPaymentStatus] = useState({
+    msg: 'nothing'
+  })  
+  const [loading, setLoading] = useState(false)
 
-  const JMIStudentHandler = (e,type) => {
-    if(type === 'checkbox'){
+  const JMIStudentHandler = (e, type) => {
+    if (type === "checkbox") {
       setJMI({
         status: e.target.checked,
-        ID: ""
-      })
-    }else{
+        ID: "",
+      });
+    } else {
       setJMI({
         ...JMI,
-        ID: e.target.value
-      })
+        ID: e,
+      });
     }
-  }
-
-  const createOrder = async (amount) => {
-    setLoading(true);
-    try {
-      await displayRazorpay(amount);
-    } catch (e) {
-      console.log(e);
-    }
-    setLoading(false);
   };
-  async function displayRazorpay(selectedAmount) {
-    const res = await loadScript(
-      "https://checkout.razorpay.com/v1/checkout.js"
-    );
-
-    if (!res) {
-      alert("Razorpay SDK failed to load. Are you online?");
-      return;
-    }
-
-    // creating a new order
-    const result = await ticket.createOrder(selectedAmount);
-
-    if (!result) {
-      alert("Server error. Are you online?");
-      return;
-    }
-
-    // Getting the order details back
-    const { amount, id: order_id, currency } = result.data;
-
-    const options = {
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
-      amount: amount.toString(),
-      currency: currency,
-      name: "TEDxJMI",
-      image: "https://i.ibb.co/ncZ8qLG/image.png",
-      order_id: order_id,
-      handler: async function (response) {
-        const data = {
-          orderCreationId: order_id,
-          razorpayPaymentId: response.razorpay_payment_id,
-          razorpayOrderId: response.razorpay_order_id,
-          razorpaySignature: response.razorpay_signature,
-        };
-        try {
-          const res = await ticket.paymentSuccess(data);
-          if (res.data.status) console.log("paymentData,", res.data);
-          alert("paymentsuccessfull, see console");
-        } catch (e) {
-          alert(e);
-          console.log(e);
-        }
-      },
-      prefill: {
-        // email: "idk@tedxjmi.org",
-      },
-      notes: {
-        address: "TEDxJMI",
-      },
-      theme: {
-        color: "white",
-      },
-    };
-
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
+  console.log(loading, !userData.isAuth)
+  useEffect(()=>{
+    if(paymentStatus.msg==='rejected')
+      alert('something went wrong')
+    console.log(paymentStatus)
+  },[paymentStatus]);
+  const paymnetSuccessCB = (data) =>{
+    setPaymentStatus(data)
   }
+
   const paymentHandler = async (e) => {
     e.preventDefault();
     const phoneReg = /^\d{10}$/;
@@ -130,128 +96,161 @@ export default function () {
     }
 
     try {
-
       const data = {
         name: userData.name,
         email: userData.email,
         phone: Phone,
         JMIID: JMI.status ? JMI.ID : "",
-        couponCode: couponCode
+        couponCode: couponCode,
       };
       const res = await ticket.paymentInitiate(data);
       console.log(res.data);
-      const {amount} = res.data;
-      createOrder(amount);
-
+      const { amount } = res.data;
+      setPaymentStatus({msg: 'processing'})
+      res = await createOrder(amount, paymnetSuccessCB);
     } catch (err) {
       console.log(err);
       throw err;
     }
   };
 
-  let cancelToken;  
+  let cancelToken;
+
   useEffect(async () => {
     const data = {
-      counpon_code : couponCode,
-      JMIID: JMI.ID
-    }
-    if(typeof cancelToken != typeof undefined){
+      counpon_code: couponCode,
+      JMIID: JMI.ID,
+    };
+    if (typeof cancelToken != typeof undefined) {
       cancelToken.cancel("Operation Cancelled due to new request");
     }
 
     try {
+      setLoading(true)
       const res = await ticket.getTicketPrice(data);
-      console.log("Result : ",res, data);
+      setLoading(false)
+      
+      console.log("Result : ", res, data);
       if (res.data.status) {
         setamount(res.data.amount);
       }
-      
-    } catch (err){
+    } catch (err) {
       console.log(err);
       throw err;
     }
-
-  },[JMI,couponCode]);
-
+  }, [JMI, couponCode]);
+  const handleLogout = async() =>{
+    setUserData({...userData, isAuth: null})
+    try{
+      await auth.logout()
+      setUserData({isAuth: false})
+    }catch(e){
+      setUserData({...userData, isAuth: true})
+    }
+  }
   return (
     <>
-      <div className={`font-mono flex w-full`}>
-        <div className={`w-1/2`}>
+      {
+        (paymentStatus.msg==='processing' || !userData.isAuth)&&
+        <LoadingScreen />
+      }
+      <div
+        className={`font-Roboto flex w-full flex-col h-screen bg-gray-100 animate-right animate__animated animate__slideInRight`}
+      >
+        <div
+          className={`w-full flex gap-3 overflow-y-scroll flex-col relative`}
+        >
+          <h1
+            className={`text-xl py-7 flex items-center justify-center text-center  bg-white w-full`}
+          >
+            Checkout Page
+          </h1>
+          <button className="absolute right-5 top-7 hover:underline" onClick={()=>handleLogout()}>Logout</button>
+          <div
+            className={`flex flex-col w-full p-2 bg-white items-center pb-10`}
+          >
+            <h1 className={` flex items-center p-4 bg-white w-full`}>
+              Personal Details
+            </h1>
 
-        </div>
-        <div className={`bg-white w-1/2`}>
-          <div className={`flex flex-col justify-center items-center py-5 my-5 pr-9 border-2 border-red-500 border-dotted mr-7`}>
-            <h1 className={`text-2xl py-8`}>Checkout Page</h1>
-            <div className={`flex flex-col w-full px-28 py-5 `}>
-              {rows.map((row, index) => {
-                return (
-                  <div key={row} className={`flex my-4 p-3 bg-gray-400/20 rounded-md`}>
-                    <div className={`flex-1`}>{row}</div>
-                    <div className={` font-bold opacity-70`} style={{ flex: 3 }}>
-                      {userData[row]}
-                    </div>
-                  </div>
-                );
-              })}
-              <div className={`flex my-4 p-3`}>
-                <div className={`flex-1`}>
-                  Phone<span className="text-red-500">*</span>
-                </div>
-                <div className={` font-bold`} style={{ flex: 3 }}>
-                  <input
-                    className={`focus:outline-none w-full`}
-                    placeholder="Enter your Phone Number"
-                    onChange={(e) => {
-                      setPhone(e.target.value);
-                    }}
-                    value={Phone}
-                  />
-                </div>
+            {rows.map((row, index) => (
+              <Input
+                label={row.toUpperCase()}
+                defaultValue={userData[row]}
+                onChange={(value) => setUserData({ ...userData, [row]: value })}
+              />
+            ))}
+            <Input label="Mobile" onChange={(value) => setPhone(value)} />
+            <Input
+              label="Coupun Code"
+              defaultValue={couponCode}
+              onChange={(value) => setcouponCode(value)}
+            />
+            <div
+              className={`flex flex-col my-2 justify-center items-center w-full py-4`}
+            >
+              <div className={`flex-1 flex items-center w-full`}>
+                <input
+                  type={`checkbox`}
+                  className={` mx-2 self-center bg-red-400`}
+                  onChange={(e) => JMIStudentHandler(e, "checkbox")}
+                  id="JMI_STUDENT_CHECKBOX"
+                />
+                <label for="JMI_STUDENT_CHECKBOX" className={` cursor-pointer self-center -mb-1 w-full`}>
+                  Are you a JMI student?
+                </label>
               </div>
-              <div className={`flex flex-col my-2 p-3 justify-center items-center`}>
-                <div className={`flex-1 flex justify-center items-center`}>
-                  <input type={`checkbox`} className={` mx-2 self-center bg-red-400`} 
-                  onChange={(e) => JMIStudentHandler(e,'checkbox')} />
-                  <label className={`self-center -mb-1`}>Are you a JMI student?<span className="text-red-500">*</span></label>
-                </div>
-                <input 
-                  placeholder="Enter your JMI Application Number" 
-                  className={`w-full p-3 my-2 border-2 rounded-md border-dotted border-red-100 ${JMI.status ? " opacity-100 pointer-events-auto mt-4" : "-mt-20 opacity-0 pointer-events-none"} transition-all outline-none` }
-                  onChange={(e) => JMIStudentHandler(e,'input')}
-                  value={JMI.ID}
-                  />
-              </div>
-              <div className={`flex my-4 p-3`}>
-                <div className={`flex-1 whitespace-nowrap`}>
-                  Coupun Code
-                </div>
-                <div className={` font-bold ml-3`} style={{ flex: 3 }}>
-                  <input
-                    className={`focus:outline-none w-full`}
-                    placeholder="Enter Coupon Code(If Any)"
-                    onChange={(e) => {
-                      setcouponCode(e.target.value);
-                    }}
-                    value={couponCode}
-                  />
-                </div>
+              <div
+                className={`w-full ${
+                  JMI.status
+                    ? " opacity-100 pointer-events-auto mt-4"
+                    : "-mt-20 opacity-0 pointer-events-none"
+                } transition-all outline-none`}
+              >
+                <Input
+                  label="Enter your JMI Application Number"
+                  onChange={(value) => JMIStudentHandler(value, "input")}
+                />
               </div>
             </div>
+            <div>
+              <ReCAPTCHA sitekey={TESTKEY} onChange={() => setcaptcha(true)} />
+            </div>
+          </div>
 
-            <ReCAPTCHA
-              sitekey={TESTKEY}
-              onChange={() => setcaptcha(true)}
-            />
-            <div className={`my-10`}>
-              <button
-                onClick={(e) => paymentHandler(e)}
-                className={`p-3 bg-red-500 text-white shadow-lg shadow-red-500/10 hover:shadow-red-500/30 transition-all`}
-              >
-                Pay {amount}
-              </button>
+          <div className={` bg-white w-full flex flex-col items-center pb-5 relative `}>
+            <h1 className={` flex items-center p-4 bg-white w-full`}>
+              Summary
+            </h1>
+            {
+              loading&&
+              <LoadingCircle />
+            }
+            <div className={`flex flex-col w-full px-8 gap-1 text-gray-700 `}>
+              <div className="flex justify-between">
+                <div>Base Price</div>
+                <div>{amount}Rs</div>
+              </div>
+              <div className="flex justify-between">
+                <div>Coupun Discount</div>
+                <div>{amount}Rs</div>
+              </div>
             </div>
           </div>
         </div>
+          <div className=" p-4 w-full items-center relative flex justify-around bg-white shadow-inner">
+            <Link href="/">
+              <div className="py-2 px-4 cursor-pointer text-red-900">
+                Cancle
+              </div>
+            </Link>
+            <button
+              onClick={(e) => paymentHandler(e)}
+              className={`bg-black h-12 text-white px-12 py-3 transition-all`}
+            >
+              Checkout
+            </button>
+          </div>
       </div>
     </>
   );

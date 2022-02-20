@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
       return
     else
       window.isFetched = true
-    localStorage.setItem('csrf', (await auth.handshake()).data.csrf);
+    await auth.handshake()
     let res = await auth.status()
     const {name, email, picture, alreadyHaveATicket} = res.data
     if(res.data.status)

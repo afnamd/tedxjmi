@@ -43,12 +43,12 @@ const Input = ({className, placeholder=''}) =>{
 
     return(
         <div className="font-sans">
-            <div className={`flex relative border group  rounded-lg pt-2 pb-2 transition-all ${className}`}>
-                <div className={`absolute z-0 duration-100 ${!focus&&data===""?'pl-4 pr-5 pt-2 text-gray-200':'pl-4  text-sm text-gray-400'} `} >
+            <div className={`flex relative border group  rounded-lg h-16 transition-all ${className}`}>
+                <div className={`absolute z-0 duration-100 ${!focus&&data===""?'pl-4 pr-5 pt-4 text-gray-200':'pl-4 pt-2  text-sm text-gray-400'} `} >
                 {placeholder}
                 </div>
                 <input type="text" onChange={(e)=>setData(e.target.value)} onBlur={()=>setFocus(false)} onFocus={()=>setFocus(true)} className=" z-10 outline-none pl-5 pr-5 pt-5 w-full" style={{backgroundColor: 'rgba(255, 242, 0, 0)'}}  value={data}/>
-                <button className=" rounded-r-2xl ring-white p-4" onClick={onSubmit}>Signup</button>
+                <button className="hover:bg-gray-900 active:bg-slate-800 rounded-r-2xl ring-white p-4" onClick={onSubmit}>Signup</button>
                 <ToastContainer />
             </div>
         </div>

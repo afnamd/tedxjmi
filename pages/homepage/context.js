@@ -2,13 +2,13 @@ import React from "react";
 const Context = () => {
   return (
     <>
-      <div className="bg-white rounded-b-2xl ">
-        <div className="lg:flex pb-10 2xl:w-5/6  ml-auto mr-auto ">
-          <div className="pl-10 pr-10 flex flex-col gap-4">
+      <div className="bg-white rounded-b-2xl md:pl-10 md:pr-10 pl-4 pr-4 ">
+        <div className="lg:flex-row flex-col flex gap-10 pb-10 2xl:w-5/6  ml-auto mr-auto ">
+          <div className="flex flex-col gap-4">
             <div className="text-3xl md:text-4xl text-center md:text-left  font-Cinzel">
               Our idea of "Different Lenses"
             </div>
-            <div className="font-Lora ">
+            <div className="font-Lora text-justify">
               When we're talking about different lenses, we mean different eyes,
               various individuals, and every individual is unique in their way,
               made uniquely, would see things differently and perceive it based
@@ -24,11 +24,11 @@ const Context = () => {
               together for everyone to see the horizon of perspectives.
             </div>
           </div>
-          <div className="pl-10 pr-10  flex flex-col gap-4 md:pt-0 pt-12">
+          <div className="flex flex-col gap-4 md:pt-0 pt-12">
             <div className="text-3xl md:text-4xl text-center md:text-left font-Cinzel">
               The TEDx Conference
             </div>
-            <div className="font-Lora">
+            <div className="font-Lora  text-justify">
               TEDxJMI brings together a collection of doers, thinkers,
               innovators, explorers, visionaries, teachers and learners We seek
               to illuminate, inspire, change perceptions, incite action and

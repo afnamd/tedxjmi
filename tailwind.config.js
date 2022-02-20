@@ -7,6 +7,7 @@ module.exports = {
       fontFamily: {
         Cinzel: ["Cinzel", "serif"],
         Lora: ["Lora", "serif"],
+        Roboto: ["Roboto", "sans-serif"]
       },
       width: {
         "200px": "200px",
