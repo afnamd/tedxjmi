@@ -8,10 +8,11 @@ import LoadingScreen from "../loading_screen";
 import LoadingCircle from "../loading_circle";
 import Link from "next/link";
 import auth from "../../api/auth";
-
+import { paymentState } from "../../components/atoms";
 
 const TESTKEY = "6LfINnkeAAAAAOH8YfXAzYOwPU48yFeQuTdk_f95";
 const Input = ({ label, defaultValue = "", onChange = () => { } }) => {
+
   const [focus, setFocus] = useState(false);
   const [value, setValue] = useState(defaultValue);
   const handleChange = (value) => {
@@ -43,6 +44,10 @@ const Input = ({ label, defaultValue = "", onChange = () => { } }) => {
   );
 };
 export default function () {
+
+  const [payment, setPayment] = useRecoilState(paymentState);
+
+
   const [captcha, setcaptcha] = useState(false);
   const [JMI, setJMI] = useState({
     status: false,
@@ -80,6 +85,13 @@ export default function () {
   useEffect(() => {
     if (paymentStatus.msg === 'rejected')
       alert('something went wrong')
+
+    if (paymentStatus.status === true) {
+      alert('Payment Successful')
+      setUserData({ ...userData, alreadyHaveATicket: true })
+
+    }
+
     console.log(paymentStatus)
   }, [paymentStatus]);
   const paymnetSuccessCB = (data) => {
@@ -109,8 +121,15 @@ export default function () {
       const res = await ticket.paymentInitiate(data);
       console.log(res.data);
       const { amount } = res.data;
-      setPaymentStatus({ msg: 'processing' })
-      res = await createOrder(amount, paymnetSuccessCB);
+      setPaymentStatus({ msg: 'processing' });
+      setPayment({
+        ...payment,
+        finalamount: amount,
+        coupon: couponCode,
+        isJMIStudent: JMI.status,
+      });
+
+      res = await createOrder(amount, paymnetSuccessCB, couponCode);
     } catch (err) {
       console.log(err);
       throw err;

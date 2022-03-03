@@ -1,6 +1,9 @@
-import {loadScript} from './index'
+import { loadScript } from './index'
 import ticket from '../api/ticket'
-async function displayRazorpay(selectedAmount, cb) {
+
+
+async function displayRazorpay(selectedAmount, cb, couponCode) {
+
   const res = await loadScript(
     "https://checkout.razorpay.com/v1/checkout.js"
   );
@@ -29,7 +32,7 @@ async function displayRazorpay(selectedAmount, cb) {
     image: "https://i.ibb.co/ncZ8qLG/image.png",
     order_id: order_id,
     modal: {
-      ondismiss: ()=>{
+      ondismiss: () => {
         cb({
           msg: 'rejected'
         })
@@ -41,6 +44,8 @@ async function displayRazorpay(selectedAmount, cb) {
         razorpayPaymentId: response.razorpay_payment_id,
         razorpayOrderId: response.razorpay_order_id,
         razorpaySignature: response.razorpay_signature,
+        amount: amount,
+        coupon: couponCode,
       };
       try {
         const res = await ticket.paymentSuccess(data);
@@ -65,12 +70,14 @@ async function displayRazorpay(selectedAmount, cb) {
   const paymentObject = new window.Razorpay(options);
   paymentObject.open();
 
+  return paymentObject;
+
 }
-const createOrder = async (amount, cb) => {
-    try {
-      await displayRazorpay(amount, cb);
-    } catch (e) {
-      console.log(e);
-    }
+const createOrder = async (amount, cb, couponCode) => {
+  try {
+    return await displayRazorpay(amount, cb, couponCode);
+  } catch (e) {
+    console.log(e);
+  }
 };
 export default createOrder

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Link from "next/link";
 import { userState as userState } from "../../components/atoms";
-import {  useRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 const Venue = () => {
   const [user, setUser] = useRecoilState(userState);
 
@@ -21,19 +21,19 @@ const Venue = () => {
           <p className="mt-7 md:text-3xl">
             <span className="text-red-500">27th</span> of March
           </p>
-              <Link
-                href="dashbaord"                
-              >
-                <button
-                  className={`mt-10 pt-2 pb-2 pl-4 pr-4 font-Roboto bg-black text-white focus:bg-red-800 `}
-                >
-                  {
-                    user.alreadyHaveATicket?
-                    'login':
-                    'Book Your Tickets'
-                  }
-                </button>
-              </Link>
+          <Link
+            href="dashbaord"
+          >
+            <button
+              className={`mt-10 pt-2 pb-2 pl-4 pr-4 font-sans tracking-wide bg-red-600 rounded-md text-white shadow-lg shadow-transparent focus:bg-red-800 hover:shadow-md hover:shadow-red-500/10`}
+            >
+              {
+                user.alreadyHaveATicket ?
+                  'Login' :
+                  'Book Your Tickets'
+              }
+            </button>
+          </Link>
 
           <p className="text-xs mt-4 opacity-30 text-center">
             Tickets aren't available right now. Check back later!

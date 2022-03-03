@@ -10,3 +10,13 @@ export const userState = atom({
         alreadyHaveATicket: false
     }
 });
+
+export const paymentState = atom({
+    key: "paymentState",
+    default: {
+        status: null,
+        finalamount: 0,
+        coupon: '',
+        isJMIStudent: false,
+    }
+});
