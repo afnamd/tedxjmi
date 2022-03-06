@@ -1,10 +1,10 @@
 export const data = [
     {
         id: 1,
-        name: 'Name 1',
-        title: 'Title 1',
-        img: 'https://100k-faces.glitch.me/random-image',
-        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna",
+        name: 'Najma Akhtar',
+        title: 'Padma Shri',
+        img: '/static/images/speakers/najma_akhtar.png',
+        bio: "Vice-Chancellor of JMI",
         socials: {
             instagram: "instagram.com",
             facebook: "facebook.com",
@@ -14,10 +14,10 @@ export const data = [
     },
     {
         id: 2,
-        name: 'Name 2',
-        title: 'Title 1',
-        img: 'https://100k-faces.glitch.me/random-image',
-        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna",
+        name: 'Mr Ankur Warikoo',
+        title: 'Serial Entrepreneur',
+        img: '/static/images/speakers/ankur_warikoo.jpg',
+        bio: "Internet influencer",
         socials: {
             instagram: "instagram.com",
             facebook: "facebook.com",
@@ -26,10 +26,10 @@ export const data = [
     },
     {
         id: 3,
-        name: 'Name 3',
-        title: 'Title 1',
-        img: 'https://100k-faces.glitch.me/random-image',
-        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna",
+        name: 'Mr Sanjay Hegde',
+        title: 'Senior Advocate',
+        img: '/static/images/speakers/sanjay_hegde.jpg',
+        bio: "Supreme Court",
         socials: {
             instagram: "instagram.com",
             facebook: "facebook.com",
@@ -39,10 +39,10 @@ export const data = [
     },
     {
         id: 4,
-        name: 'Name 4',
-        title: 'Title 1',
+        name: 'Miss Soumya Khandelwal',
+        title: 'Photojournalist',
         img: 'https://100k-faces.glitch.me/random-image',
-        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna",
+        bio: "National Geographic",
         socials: {
             instagram: "instagram.com",
             facebook: "facebook.com",
@@ -51,10 +51,10 @@ export const data = [
     },
     {
         id: 5,
-        name: 'Name 5',
-        title: 'Title 1',
+        name: 'Miss Arushi Kapoor',
+        title: 'Content Creator',
         img: 'https://100k-faces.glitch.me/random-image',
-        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna",
+        bio: "OkTested",
         socials: {
             instagram: "instagram.com",
             facebook: "facebook.com",
@@ -63,10 +63,10 @@ export const data = [
     },
     {
         id: 6,
-        name: 'Name 6',
-        title: 'Title 1',
+        name: 'Miss Oviya Singh',
+        title: 'Author',
         img: 'https://100k-faces.glitch.me/random-image',
-        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna",
+        bio: "Two Time Champion, Youth Spoken Fest",
         socials: {
             instagram: "instagram.com",
             facebook: "facebook.com",
@@ -75,10 +75,10 @@ export const data = [
     },
     {
         id: 7,
-        name: 'Name 7',
-        title: 'Title 1',
+        name: 'Dr Maria Khan',
+        title: 'Scholar',
         img: 'https://100k-faces.glitch.me/random-image',
-        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna",
+        bio: "Public speaker",
         socials: {
             instagram: "instagram.com",
             facebook: "facebook.com",
