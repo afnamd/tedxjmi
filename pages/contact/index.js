@@ -4,35 +4,21 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import { HiOutlineMail } from "react-icons/hi";
 import { BiPhone } from "react-icons/bi";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const emailChangeHandler = (e) => {
-    setFormData({ ...formData, email: e.target.value });
-  };
-  const nameChangeHandler = (e) => {
-    setFormData({ ...formData, name: e.target.value });
-  };
-  const messageChangeHandler = (e) => {
-    setFormData({ ...formData, message: e.target.value });
-  };
 
-  const formSubmitHandler = async (e) => {
-    e.preventDefault();
-    console.log(formData);
-    const req = await axios.post("/different-lenses/contact_us", formData);
-    if (req.status === 200) {
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-      });
-    }
-  };
+function isValidEmail(email){
+  const emailRegex = RegExp(
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  );
+
+  return emailRegex.test(email);
+}
+
+
+function Contact(props) {
+
   return (
     <Layout>
       <div className="bg-white font-Cinzel flex flex-col justify-center items-center p-3">
@@ -62,14 +48,35 @@ function Contact() {
                   email: "",
                   message: "",
                 }}
+
+                onSubmit={async (values) => {
+                  if(isValidEmail(values.email) == false){
+                    toast.error("Please enter a valid email address");
+                    return;
+                  }
+
+                  try {
+
+                    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/different-lenses/contact_us`;
+                    console.log(url);
+                    const res = await axios.post(url, values);
+                    if (res.status === 200) {
+                      toast.success("Your message has been sent successfully");
+                    }
+
+                  } catch (err){
+                    console.log(err);
+                    toast.error("Error Sending Message");
+                  }
+
+                }}
+
               >
-                <Form onSubmit={formSubmitHandler}>
-                  <Field value={formData.email} onChange={emailChangeHandler} className="p-2 border my-2 w-full border-black outline-none focus:bg-gray-200/30 transition-all" name="email" placeholder="Email" />
-                  <Field value={formData.name} onChange={nameChangeHandler} className="p-2 border my-2 w-full border-black outline-none focus:bg-gray-200/30 transition-all" name="name" placeholder="Name" />
+                <Form>
+                  <Field className="p-2 border my-2 w-full border-black outline-none focus:bg-gray-200/30 transition-all" name="email" placeholder="Email" />
+                  <Field className="p-2 border my-2 w-full border-black outline-none focus:bg-gray-200/30 transition-all" name="name" placeholder="Name" />
 
                   <Field
-                    value={formData.message}
-                    onChange={messageChangeHandler}
                     className="w-full border my-2 p-2 border-black resize-none outline-none focus:bg-gray-200/30 h-60 transition-all"
                     placeholder="message"
                     name="message"
@@ -83,6 +90,7 @@ function Contact() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </Layout>
   );
 }

@@ -13,7 +13,7 @@ const Navbar = () => {
       </div>
       <div className="cursor-pointer">
           <Link href="/">
-              <img src="https://i.ibb.co/ncZ8qLG/image.png" className="h-10 " />
+              <img src="./static/images/Tedxjmi.png" className="h-10 " />
           </Link>
       </div>
 

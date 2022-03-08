@@ -1,7 +1,7 @@
 import React from "react";
 import Input from "./input";
 import AfnamdLogo from "./svg/afnamd";
-const Footer = () => {
+const Footer = (props) => {
   return (
     <div className="text-white  ml-auto mr-auto w-11/12 2xl:w-10/12 font-Cinzel pt-10 md:pl-10 md:pr-10 flex flex-col gap-10 bg-black">
       <div className="flex gap-12 md:items-start items-center flex-col md:flex-row md:justify-between">
@@ -25,7 +25,6 @@ const Footer = () => {
                 className="border-black placeholder-red-400"
                 placeholder="email"
               />
-              <button className=" rounded-r-2xl ring-white p-4">Signup</button>
             </div>
           </div>
           <div className="flex justify-center gap-12">
