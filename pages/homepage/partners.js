@@ -3,16 +3,16 @@ import AfnamdLogo from "../../components/svg/afnamd";
 import Link from "next/link";
 import { data } from "../api/archive";
 const ArchiveDesktop = () => {
-  let maxDiff = data[data.length-1].year-data[0].year
-  return(
+  let maxDiff = data[data.length - 1].year - data[0].year
+  return (
     <div className="xl:flex hidden justify-around mt-12 text-base">
       <div className="flex w-4/5">
         {
-          data.map((_,i)=>{
-            return(
+          data.map((_, i) => {
+            return (
               <>
-              <div className="group h-16 ">                
-                  <div className={` w-4 h-4 border-2 border-black ${i!==(data.length-1)?'bg-black':'bg-white'} rounded-full transition-all`} />
+                <div className="group h-16 ">
+                  <div className={` w-4 h-4 border-2 border-black ${i !== (data.length - 1) ? 'bg-black' : 'bg-white'} rounded-full transition-all`} />
                   <div className="absolute  bg-white w-80 h-0 overflow-hidden opacity-0 -mt-48 group-hover:-mt-52 group-hover:h-48 group-hover:opacity-100 transition-all -ml-32 rounded-md border-2 p-8 shadow-xl">
                     <h1>
                       {_.theme}{" "}
@@ -33,8 +33,8 @@ const ArchiveDesktop = () => {
                   </p>
                 </div>
                 {
-                  i!==(data.length-1)&&
-                  <div className="border-t-2 mt-2 border-black" style={{width:(100/maxDiff)*(data[i+1].year-data[i].year)+'%'}}/>
+                  i !== (data.length - 1) &&
+                  <div className="border-t-2 mt-2 border-black" style={{ width: (100 / maxDiff) * (data[i + 1].year - data[i].year) + '%' }} />
                 }
               </>
             )
@@ -52,7 +52,7 @@ const ArchiveMobile = () => {
         return (
           <>
             <div className="group -mr-4 ">
-            <div className={` w-4 h-4 border-2 border-black ${i!==0?'bg-black':'bg-white'} rounded-full transition-all`} />
+              <div className={` w-4 h-4 border-2 border-black ${i !== 0 ? 'bg-black' : 'bg-white'} rounded-full transition-all`} />
               <div className="">
                 <div className="absolute w-56 h-48 ml-8 -mt-5">
                   <h1>
@@ -74,9 +74,9 @@ const ArchiveMobile = () => {
               </div>
             </div>
             {
-              i!==data.length-1?
-              <div className="h-48 border-l-2 ml-2 border-black" />:
-              <div className="h-48 ml-2" />
+              i !== data.length - 1 ?
+                <div className="h-48 border-l-2 ml-2 border-black" /> :
+                <div className="h-48 ml-2" />
             }
           </>
         );
@@ -93,6 +93,9 @@ const Partners = () => {
           <h3 className="">Partners</h3>
         </div>
         <div className="flex flex-wrap w-full items-center justify-around mt-12">
+          <div>
+            <img src="/static/images/partners/jmicooperativebank.jpeg" />
+          </div>
           <div>
             <AfnamdLogo fill={"#2A2829"} w={256} />
           </div>
